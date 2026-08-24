@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { useState } from "react";
 import { Link } from "@/components/site/link";
 import { GROK_PROVIDERS, authEnabled, signIn } from "@/lib/auth/client";
@@ -38,7 +39,7 @@ export function SignInPanel({
     <div className="grid min-h-dvh bg-ink lg:grid-cols-2">
       <div className="relative hidden overflow-hidden lg:block">
         <img
-          src={role === "faculty" ? "/images/people/bernard-teaching.jpg" : "/images/people/bernard-teaching-nsbt.jpg"}
+          src={asset(role === "faculty" ? "/images/people/bernard-teaching.jpg" : "/images/people/bernard-teaching-nsbt.jpg")}
           alt="The Rev. Dr. A. R. Bernard, Sr."
           data-provenance="REAL"
           className="absolute inset-0 size-full object-cover object-[center_14%]"

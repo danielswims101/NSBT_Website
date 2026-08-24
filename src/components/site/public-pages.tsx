@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { useRouterState } from "@tanstack/react-router";
 import { Link } from "@/components/site/link";
 import { AskPanel } from "./ask-panel";
@@ -612,7 +613,7 @@ function AlumniPage() {
               <figure>
                 <div className="overflow-hidden bg-ink">
                   <img
-                    src={photo.src}
+                    src={asset(photo.src)}
                     alt={photo.alt}
                     data-provenance="REAL"
                     className="aspect-[3/2] w-full object-cover object-[center_22%]"
@@ -753,7 +754,7 @@ function TrusteesPage() {
                 {t.role === "Founding President and Chairperson of the Board of Trustees" ? "Chairperson" : t.role.replace(", Board of Trustees", "")}
               </p>
               {t.photo ? (
-                <img src={t.photo} alt={t.name} data-provenance="REAL" className="row-start-1 aspect-3/4 w-full object-cover object-top" />
+                <img src={asset(t.photo)} alt={t.name} data-provenance="REAL" className="row-start-1 aspect-3/4 w-full object-cover object-top" />
               ) : (
                 <div className="row-start-1 grid aspect-3/4 place-items-center bg-ink-soft text-center">
                   <p className="px-4 font-display text-xl text-paper/50">Portrait to follow</p>
@@ -787,7 +788,7 @@ function DegreesPage() {
       <div className="mt-16 grid gap-16 lg:grid-cols-2">
         {degrees.map((d) => (
           <article key={d.slug}>
-            <img src={d.photo} alt={`The ${d.name}.`} data-provenance="REAL" className="aspect-4/3 w-full object-cover" />
+            <img src={asset(d.photo)} alt={`The ${d.name}.`} data-provenance="REAL" className="aspect-4/3 w-full object-cover" />
             <h2 className="mt-6 font-display text-[1.85rem] font-medium text-ink sm:text-[2.15rem]">{d.name}</h2>
             <p className="mt-2 text-[15px] text-muted">{degreeMeta}</p>
             <p className="mt-4 text-[1.05rem] leading-[1.65]">{d.slug === "macm" ? macmSummary : maglSummary}</p>

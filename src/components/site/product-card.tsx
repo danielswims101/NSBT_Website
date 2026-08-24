@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { useState } from "react";
 import { Link } from "@/components/site/link";
 import { checkoutNote } from "@/content/copy";
@@ -17,7 +18,7 @@ export function ProductCard({ product, quiet = false }: { product: Product; quie
         <div className={cn("overflow-hidden bg-paper-deep", quiet ? "aspect-[4/5]" : "aspect-square")}>
           {product.image ? (
             <img
-              src={product.image}
+              src={asset(product.image)}
               alt={product.name}
               data-provenance={isBook ? "REAL" : "GENERATED"}
               className="h-full w-full object-cover object-center"

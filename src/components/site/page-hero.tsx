@@ -2,6 +2,7 @@ import { MailLink } from "./mail-link";
 import { Link } from "@/components/site/link";
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { asset } from "@/lib/asset";
 
 export function PageHero({
   kicker,
@@ -34,7 +35,7 @@ export function PageHero({
           )}
         >
           <img
-            src={image}
+            src={asset(image)}
             alt={alt ?? ""}
             className="h-full w-full object-cover lg:absolute lg:inset-0"
             style={{ objectPosition }}
@@ -172,7 +173,7 @@ export function HubTile({
     <Link to={href} className="group block">
       <div className="overflow-hidden bg-ink">
         <img
-          src={image}
+          src={asset(image)}
           alt={alt}
           data-provenance={provenance}
           className="aspect-[3/2] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
@@ -198,7 +199,7 @@ export function PhotoStrip({
         <li key={item.src}>
           <figure>
             <img
-              src={item.src}
+              src={asset(item.src)}
               alt={item.alt}
               data-provenance="REAL"
               className="aspect-[3/2] w-full object-cover object-top"
@@ -257,7 +258,7 @@ export function PersonTile({
       <div className="overflow-hidden bg-ink">
         {photo ? (
           <img
-            src={photo}
+            src={asset(photo)}
             alt={name}
             data-provenance="REAL"
             className="aspect-3/4 w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"

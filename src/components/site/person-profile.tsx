@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { Link } from "@/components/site/link";
 import type { ReactNode } from "react";
 import type { Person } from "@/content/people";
@@ -27,7 +28,7 @@ export function PersonProfile({
           <div className="md:col-span-4">
             {person.photo ? (
               <img
-                src={person.photo}
+                src={asset(person.photo)}
                 alt={person.name}
                 data-provenance="REAL"
                 className="aspect-3/4 w-full object-cover object-top"
@@ -51,7 +52,7 @@ export function PersonProfile({
           <div className="mx-auto grid max-w-7xl gap-6 px-4 py-8 sm:px-6 sm:py-10 md:grid-cols-2 md:gap-10">
             <figure>
               <img
-                src="/images/people/bernard-ccc.jpg"
+                src={asset("/images/people/bernard-ccc.jpg")}
                 alt="The Reverend Dr. A. R. Bernard, Sr., teaching at Christian Cultural Center in Brooklyn."
                 data-provenance="REAL"
                 className="aspect-square w-full object-cover object-center"
@@ -62,7 +63,7 @@ export function PersonProfile({
             </figure>
             <figure>
               <img
-                src="/images/people/bernard-nypd.jpg"
+                src={asset("/images/people/bernard-nypd.jpg")}
                 alt="The Reverend Dr. A. R. Bernard, Sr., with officers of the New York City Police Department."
                 data-provenance="REAL"
                 className="aspect-square w-full object-cover object-center"

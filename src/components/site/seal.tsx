@@ -1,9 +1,10 @@
+import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 
 export function Seal({ className }: { className?: string }) {
   return (
     <img
-      src="/images/nsbt-seal.png"
+      src={asset("/images/nsbt-seal.png")}
       alt=""
       className={cn("h-10 w-auto shrink-0 object-contain", className)}
     />
@@ -32,7 +33,7 @@ export function Wordmark({ invert = false }: { invert?: boolean }) {
 export function SealLarge({ className }: { className?: string }) {
   return (
     <img
-      src="/images/nsbt-seal.png"
+      src={asset("/images/nsbt-seal.png")}
       alt=""
       className={cn("h-28 w-auto object-contain md:h-36", className)}
     />

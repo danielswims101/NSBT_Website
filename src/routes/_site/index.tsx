@@ -1,3 +1,4 @@
+import { asset } from "@/lib/asset";
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@/components/site/link";
 import { AskPanel } from "@/components/site/ask-panel";
@@ -90,7 +91,7 @@ function Home() {
         <div className="mt-12 grid gap-16 lg:grid-cols-2">
           {degrees.map((d) => (
             <article key={d.slug}>
-              <img src={d.photo} alt={`The ${d.name}.`} data-provenance="REAL" className="aspect-4/3 w-full object-cover object-top" />
+              <img src={asset(d.photo)} alt={`The ${d.name}.`} data-provenance="REAL" className="aspect-4/3 w-full object-cover object-top" />
               <h3 className="mt-6 font-display text-[28px] font-medium text-ink">{d.name}</h3>
               <p className="mt-2 text-[15px] text-muted">{degreeMeta}</p>
               <p className="mt-4 text-[17px] leading-[1.65]">{d.slug === "macm" ? macmSummary : maglSummary}</p>
@@ -120,7 +121,7 @@ function Home() {
           <div className="grid items-center gap-12 md:grid-cols-12">
             <div className="md:col-span-5">
               <img
-                src="/images/people/bernard-headshot.jpg"
+                src={asset("/images/people/bernard-headshot.jpg")}
                 alt="The Reverend Dr. A. R. Bernard, Sr."
                 data-provenance="REAL"
                 className="aspect-3/4 w-full object-cover object-top"
