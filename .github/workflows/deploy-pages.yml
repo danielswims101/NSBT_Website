@@ -28,8 +28,8 @@ jobs:
       # Project pages are served under /<repo>/. This feeds vite `base` and the
       # nitro github_pages preset (see vite.config.ts).
       PAGES_BASE: /NSBT_Website/
-      # Leave the DB unset so `npm run build`'s db:migrate step skips (HANDOFF §3).
-      DATABASE_URL: ""
+      # DATABASE_URL is intentionally left UNSET so `npm run build`'s db:migrate
+      # step skips (HANDOFF §3). Do not set it, even to an empty string.
     steps:
       - uses: actions/checkout@v4
 
@@ -38,7 +38,10 @@ jobs:
           node-version: 22
           cache: npm
 
-      - run: npm ci
+      # The committed package-lock.json (from the Grok export) is out of sync
+      # with package.json, so `npm ci` refuses. Use `npm install`, which
+      # resolves and reconciles the lockfile, then builds.
+      - run: npm install --no-audit --no-fund
 
       - name: Build static site
         run: npm run build
