@@ -36,10 +36,12 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "canonical", href: CANONICAL_ORIGIN },
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
-      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
-      { rel: "manifest", href: "/manifest.webmanifest" },
+      // BASE_URL is "/" locally and "/NSBT_Website/" on GitHub Pages, so these
+      // static assets resolve under whatever subpath the site is served from.
+      { rel: "icon", type: "image/svg+xml", href: `${import.meta.env.BASE_URL}favicon.svg` },
+      { rel: "icon", type: "image/png", href: `${import.meta.env.BASE_URL}favicon.png` },
+      { rel: "apple-touch-icon", href: `${import.meta.env.BASE_URL}apple-touch-icon.png` },
+      { rel: "manifest", href: `${import.meta.env.BASE_URL}manifest.webmanifest` },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

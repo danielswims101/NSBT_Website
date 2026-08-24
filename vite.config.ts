@@ -171,13 +171,11 @@ export default defineConfig(({ command, isPreview }) => ({
     // static files (GitHub Pages has no Node server). Each reachable page is
     // prerendered to HTML; a client shell hydrates and takes over navigation.
     tanstackStart({ spa: { enabled: true, prerender: { crawlLinks: true } } }),
-    ...(command === "build" || isPreview
-      ? [
-          nitro({
-            // GitHub Pages when building in CI (PAGES_BASE set); Vercel otherwise.
-            preset: process.env.PAGES_BASE ? "github_pages" : "vercel",
-          }),
-        ]
+    // For the GitHub Pages build (PAGES_BASE set) we want a pure static SPA and
+    // no server, so nitro is skipped — TanStack Start's SPA prerender emits the
+    // static client. Other builds (Vercel) keep the nitro server preset.
+    ...((command === "build" || isPreview) && !process.env.PAGES_BASE
+      ? [nitro({ preset: "vercel" })]
       : []),
     viteReact(),
   ],

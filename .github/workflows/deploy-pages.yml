@@ -59,16 +59,18 @@ jobs:
           echo "dir=$DIR" >> "$GITHUB_OUTPUT"
           echo "Static output: $DIR"; ls -la "$DIR"
 
-      - name: SPA fallback + disable Jekyll
+      - name: SPA layout + disable Jekyll
         run: |
           DIR="${{ steps.out.outputs.dir }}"
           touch "$DIR/.nojekyll"
-          # GitHub Pages serves 404.html for unknown deep links; point it at the
-          # SPA shell so client-side routes resolve instead of 404ing.
-          if [ ! -f "$DIR/404.html" ]; then
-            if [ -f "$DIR/_shell.html" ]; then cp "$DIR/_shell.html" "$DIR/404.html";
-            elif [ -f "$DIR/index.html" ]; then cp "$DIR/index.html" "$DIR/404.html"; fi
+          # SPA mode emits _shell.html. GitHub Pages serves index.html at "/" and
+          # 404.html for unknown deep links, so point both at the shell — the
+          # client router then renders the requested route.
+          if [ -f "$DIR/_shell.html" ]; then
+            [ -f "$DIR/index.html" ] || cp "$DIR/_shell.html" "$DIR/index.html"
+            cp "$DIR/_shell.html" "$DIR/404.html"
           fi
+          ls -la "$DIR"/*.html
 
       - uses: actions/configure-pages@v5
 
