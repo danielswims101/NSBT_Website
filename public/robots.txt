@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /portal
+Disallow: /portal/
+Disallow: /api
+Disallow: /api/
+Disallow: /signin
+Disallow: /signin/
+Disallow: /store/cart
+Disallow: /store/checkout
+Disallow: /cart
+Disallow: /checkout
+Sitemap: https://www.nsbt.org/sitemap.xml
