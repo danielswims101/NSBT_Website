@@ -143,7 +143,12 @@ function authPopupPlugin(): Plugin {
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
+// GitHub Pages serves a project repo under a subpath (/NSBT_Website/). The CI
+// build sets PAGES_BASE to that; local dev and other hosts stay at "/".
+const pagesBase = process.env.PAGES_BASE || "/";
+
 export default defineConfig(({ command, isPreview }) => ({
+  base: pagesBase,
   server: {
     host: "0.0.0.0",
     port: 8080,
@@ -162,11 +167,15 @@ export default defineConfig(({ command, isPreview }) => ({
     // Dev-only /__app-env, read by scripts/check-auth-invariant.mjs.
     appEnvPlugin(),
     tailwindcss(),
-    tanstackStart(),
+    // SPA mode + link-crawling prerender so the whole site can be served as
+    // static files (GitHub Pages has no Node server). Each reachable page is
+    // prerendered to HTML; a client shell hydrates and takes over navigation.
+    tanstackStart({ spa: { enabled: true, prerender: { crawlLinks: true } } }),
     ...(command === "build" || isPreview
       ? [
           nitro({
-            preset: "vercel",
+            // GitHub Pages when building in CI (PAGES_BASE set); Vercel otherwise.
+            preset: process.env.PAGES_BASE ? "github_pages" : "vercel",
           }),
         ]
       : []),
