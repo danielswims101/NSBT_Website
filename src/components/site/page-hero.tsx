@@ -31,7 +31,7 @@ export function PageHero({
         <div
           className={cn(
             "absolute inset-0",
-            compact ? "max-lg:relative max-lg:h-52" : "max-lg:relative max-lg:h-64",
+            compact ? "max-lg:relative max-lg:h-72" : "max-lg:relative max-lg:h-[26rem]",
           )}
         >
           <img

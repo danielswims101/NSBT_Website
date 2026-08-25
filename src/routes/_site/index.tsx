@@ -49,7 +49,7 @@ function Home() {
         lede={homeLede}
         image="/images/people/bernard-teaching-nsbt.jpg"
         alt="The Reverend Dr. A. R. Bernard, Sr., teaching."
-        objectPosition="center 44%"
+        objectPosition="center 22%"
       >
         <Button asChild>
           <Link to="/admissions/apply">Apply to NSBT</Link>
