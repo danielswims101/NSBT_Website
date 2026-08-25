@@ -915,8 +915,8 @@ function FacultyPage() {
   return (
     <PageShell path="/academics/faculty">
       <p className="max-w-[72ch] text-[17px] leading-[1.65]">{facultyIntro}</p>
-      <div className="mt-12 grid gap-12 sm:grid-cols-3">
-        {faculty.map((p) => (
+      <div className="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+        {[...faculty, people.lim].map((p) => (
           <PersonTile
             key={p.slug}
             name={p.name}
@@ -930,16 +930,6 @@ function FacultyPage() {
             href={p.href}
           />
         ))}
-      </div>
-      <h2 className="mt-16 font-display text-[28px] font-medium text-ink">Administration</h2>
-      <div className="mt-8 max-w-xl">
-        <PersonTile
-          name={people.lim.name}
-          role={people.lim.role}
-          title="Doctor of Ministry, New York Theological Seminary, 2010. Operational authority over the academic, administrative, financial, and legal functions of the institution."
-          photo={people.lim.photo}
-          href={people.lim.href}
-        />
       </div>
     </PageShell>
   );
