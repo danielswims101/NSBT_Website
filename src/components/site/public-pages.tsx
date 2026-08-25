@@ -670,8 +670,8 @@ function AcademicsHub() {
         />
         <HubTile
           href="/academics/faculty"
-          image="/images/people/irvin-official.jpg"
-          alt="Dr. Dale T. Irvin."
+          image="/images/people/bernard-teaching.jpg"
+          alt="Teaching in a live NSBT seminar."
           title="Faculty"
           body="The faculty who teach these courses, with the degrees they hold and the areas they teach."
         />
