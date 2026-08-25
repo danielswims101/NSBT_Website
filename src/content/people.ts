@@ -285,6 +285,7 @@ export const people = {
     "slug": "weiss",
     "name": "Larry H. Weiss, Esq.",
     "role": "Secretary, Board of Trustees",
+    "photo": "/images/people/weiss.jpg",
     "href": "/about/trustees/weiss",
     "lede": "Larry H. Weiss, Esq., is Secretary of the Board of Trustees of the New School of Biblical Theology. He is an attorney in East Meadow, New York, admitted to the New York bar in 1974 and to the bar of the Supreme Court of the United States in 1979.",
     "education": [
@@ -319,6 +320,7 @@ export const people = {
     "slug": "halek",
     "name": "James Halek",
     "role": "Treasurer, Board of Trustees",
+    "photo": "/images/people/halek.jpg",
     "href": "/about/trustees/halek",
     "lede": "James Halek is Treasurer of the Board of Trustees of the New School of Biblical Theology. He is a real estate developer for nonprofit organizations and commercial clients, with more than four decades of experience in development, acquisitions, land, general contracting, and project financing.",
     "education": [],
