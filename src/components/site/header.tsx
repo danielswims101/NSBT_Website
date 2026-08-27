@@ -18,7 +18,7 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b-[4px] border-seal bg-cream">
+    <header className="sticky top-0 z-50 border-b border-rule bg-cream">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 lg:h-[4.75rem] lg:px-6">
         <Link to="/" aria-label="The New School of Biblical Theology" className="inline-flex min-h-11 min-w-0 shrink items-center">
           <Wordmark />
@@ -32,7 +32,7 @@ export function SiteHeader() {
                 <Link
                   to={item.href}
                   data-current={current ? "true" : undefined}
-                  className="relative inline-flex items-center px-3.5 text-[15px] font-medium text-ink/75 transition-colors hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-cream data-[current=true]:text-ink"
+                  className="relative inline-flex items-center px-3.5 text-[12.5px] uppercase tracking-[0.16em] text-ink transition-colors hover:text-seal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-cream data-[current=true]:text-seal"
                 >
                   {item.label}
                   <span

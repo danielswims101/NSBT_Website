@@ -73,7 +73,7 @@ export function PageHero({
         )}
       >
         {kicker ? <p className="kicker text-paper/70">{kicker}</p> : null}
-        <h1 className="masthead-title masthead-title-ink mt-3 max-w-4xl">{title}</h1>
+        <h1 className="masthead-title masthead-title-ink mt-3 max-w-4xl text-paper">{title}</h1>
         {lede ? (
           <p className="mt-5 max-w-2xl text-[1.125rem] leading-[1.65] text-paper/85">{lede}</p>
         ) : null}

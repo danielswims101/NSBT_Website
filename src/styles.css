@@ -1,32 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", "Palatino Linotype", Palatino, "Times New Roman", serif;
-  --color-ink: #0c1828;
-  --color-ink-soft: #16263c;
-  --color-ink-mid: #243a55;
-  --color-paper: #f7f4ee;
-  --color-paper-deep: #ebe6dc;
-  --color-cream: #fffcf8;
-  --color-fg: #1c1915;
-  --color-muted: #5a554c;
-  --color-subtle: #6a655c;
-  --color-rule: #8f8778;
-  --color-seal: #7a1a26;
-  --color-seal-soft: #9a3140;
-  --color-background: #f7f4ee;
-  --color-foreground: #1c1915;
-  --color-card: #fffcf8;
-  --color-primary: #0c1828;
-  --color-border: #8f8778;
-  --color-ring: #0c1828;
-  --color-muted-foreground: #5a554c;
+  /* Matched to nsbt.org: Adobe Garamond Pro -> EB Garamond (headings + body),
+     Futura PT -> Jost (nav, labels, buttons). */
+  --font-sans: "Jost", "Century Gothic", Futura, "Segoe UI", system-ui, sans-serif;
+  --font-display: "EB Garamond", "Adobe Garamond Pro", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  /* nsbt.org palette: navy primary, red + gold accents, white ground. */
+  --color-ink: #1d2d77;
+  --color-ink-soft: #182456;
+  --color-ink-mid: #2a3a80;
+  --color-paper: #ffffff;
+  --color-paper-deep: #f0f0f3;
+  --color-cream: #f5f5f5;
+  --color-fg: #292929;
+  --color-muted: #5c6270;
+  --color-subtle: #6a6f7d;
+  --color-rule: #dcdde3;
+  --color-seal: #bb3e43;
+  --color-seal-soft: #cf5a5f;
+  --color-gold: #ed880c;
+  --color-gold-soft: #f59a2b;
+  --color-background: #ffffff;
+  --color-foreground: #292929;
+  --color-card: #ffffff;
+  --color-primary: #1d2d77;
+  --color-border: #dcdde3;
+  --color-ring: #1d2d77;
+  --color-muted-foreground: #5c6270;
   --radius: 0;
   --radius-sm: 0;
   --radius-md: 0;
   --radius-lg: 0;
-  --shadow-lift: 0 1px 0 rgb(12 24 40 / 0.06), 0 12px 32px -18px rgb(12 24 40 / 0.28);
+  --shadow-lift: 0 1px 0 rgb(29 45 119 / 0.06), 0 12px 32px -18px rgb(29 45 119 / 0.28);
 }
 
 @layer base {
@@ -45,7 +50,8 @@
   body {
     background: var(--color-paper);
     color: var(--color-fg);
-    font-family: var(--font-sans);
+    /* nsbt.org sets Garamond as the body face; UI chrome overrides to Futura below. */
+    font-family: var(--font-display);
     font-size: calc(clamp(1.0625rem, 1.01rem + 0.18vw, 1.125rem) * var(--nsbt-type, 1));
   }
   h1,
@@ -53,9 +59,24 @@
   h3 {
     text-wrap: balance;
     font-family: var(--font-display);
+    color: var(--color-ink);
   }
   p {
     text-wrap: pretty;
+  }
+  /* Navigation, controls, and labels use the geometric sans (Futura/Jost),
+     matching nsbt.org — everything else stays Garamond. */
+  nav a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  label,
+  th,
+  .kicker,
+  .arrow-link {
+    font-family: var(--font-sans);
   }
   button:not(:disabled),
   [role="button"]:not(:disabled) {
