@@ -60,6 +60,13 @@ export const people = {
         "paragraphs": [
           "His books include Happiness Is… Simple Steps to a Life of Joy (Touchstone Faith / Simon and Schuster, 2006) and Four Things Women Want from a Man. A further volume, Reframing Faith in a World of Power, is forthcoming."
         ]
+      },
+      {
+        "heading": "Honors and recognition",
+        "paragraphs": [
+          "He has repeatedly been named among New York's most influential leaders, including the New York Times' “The Power Pastor” and multiple appearances on Ebony's Power 100 and the New York Daily News and New York Post influence lists. He served on the mayoral transition teams of Michael Bloomberg and Bill de Blasio, and was featured on Oprah Winfrey's Super Soul Sunday.",
+          "His community work includes founding the Brooklyn Preparatory School and the Cultural Arts Academy Charter School, a food pantry and prison ministry serving Brooklyn, and orientation training for the New York City Police Department. Each week his teaching reaches hundreds of thousands of people worldwide through radio, television, and social media."
+        ]
       }
     ]
   },
