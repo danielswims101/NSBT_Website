@@ -1,27 +1,8 @@
 import { asset } from "@/lib/asset";
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@/components/site/link";
-import { Button } from "@/components/site/button";
-import { AskPanel } from "@/components/site/ask-panel";
-import { PageHero, PageWidth, PersonTile, FactBar, Eyebrow } from "@/components/site/page-hero";
-import {
-  accreditationDisclaimer,
-  degreeMeta,
-  facultyIntro,
-  founderBlurb,
-  homeH1,
-  homeKicker,
-  homeLede,
-  homePillars,
-  libraryCopy,
-  calendarCopy,
-  macmSummary,
-  maglSummary,
-  noLicensure,
-  orlandoNote,
-} from "@/content/copy";
-import { faculty } from "@/content/people";
-import { degrees } from "@/content/site";
+import { PageWidth } from "@/components/site/page-hero";
+import { STUDENT_EMAIL } from "@/content/site";
 
 export const Route = createFileRoute("/_site/")({
   component: Home,
@@ -31,241 +12,306 @@ export const Route = createFileRoute("/_site/")({
       {
         name: "description",
         content:
-          "Two graduate degrees taught entirely online. The New School of Biblical Theology prepares men and women for effective Christian ministry and leadership in a global context.",
+          "The New School of Biblical Theology prepares men and women for effective Christian ministry and leadership in a global context, entirely online.",
       },
     ],
   }),
 });
 
-/** Split the shared degree fact line ("36 credits · live seminar · …") into chips. */
-const degreeFacts = degreeMeta.split("·").map((s) => s.trim()).filter(Boolean);
+// Links carried over from nsbt.org, pointed at this build's pages. "Accreditation"
+// is replaced by the required State Authorization page (no accreditation claim).
+const aboutLinks = [
+  { label: "About the Founder", href: "/about/founder" },
+  { label: "State Authorization", href: "/state-authorization" },
+  { label: "Educational Effectiveness", href: "/about/effectiveness" },
+  { label: "Mission and Vision", href: "/about/mission" },
+  { label: "Ordination", href: "/admissions/ordination" },
+  { label: "Global Focus", href: "/about" },
+  { label: "Staff Directory", href: "/academics/faculty" },
+  { label: "Events Calendar", href: "/events" },
+];
+
+const academicsTiles = [
+  { label: "Academic Excellence", href: "/academics", img: "/images/org/tile-academic-excellence.jpg" },
+  { label: "Degrees Offered", href: "/programs", img: "/images/org/tile-degrees.jpg" },
+  { label: "Faculty", href: "/academics/faculty", img: "/images/org/tile-faculty.jpg", note: "For Students Only" },
+  { label: "Digital Theological Library", href: "/academics/library", img: "/images/org/tile-dtl.jpg" },
+  { label: "Sample Course", href: "/academics/courses", img: "/images/org/tile-sample-course.jpg" },
+  { label: "Online Learning", href: "/students/tech", img: "/images/org/tile-online-learning.jpg" },
+];
+
+const admissionsLinks = [
+  { label: "Admissions Process", href: "/admissions/apply" },
+  { label: "Apply Now", href: "/admissions/apply" },
+  { label: "Request Information", href: "/admissions/request" },
+  { label: "Tuition & Fees", href: "/tuition" },
+  { label: "Sample Course", href: "/academics/courses" },
+];
+
+const currentStudentsTiles = [
+  { label: "Student Login", href: "/login", img: "/images/org/cs-student-login.jpg" },
+  { label: "Calendar, Schedules & Forms", href: "/events", img: "/images/org/cs-calendar.jpg" },
+  { label: "Student Handbook", href: "/students/handbook", img: "/images/org/cs-handbook.jpg", note: "For Students Only" },
+  { label: "Registrar", href: "/students/records", img: "/images/org/cs-registrar.jpg" },
+  { label: "Online Chapel/Worship", href: "/students/chapel", img: "/images/org/cs-chapel.jpg" },
+  { label: "Online Prayers", href: "/students/chapel", img: "/images/org/cs-prayers.jpg" },
+];
+
+function SectionTitle({ children, id }: { children: string; id?: string }) {
+  return (
+    <h2 id={id} className="text-center font-display text-[2.4rem] font-medium text-ink sm:text-[2.85rem]">
+      {children}
+    </h2>
+  );
+}
+
+function GoldButton({ to, children }: { to: string; children: string }) {
+  return (
+    <Link
+      to={to}
+      className="inline-flex items-center bg-gold px-8 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-ink transition-colors hover:bg-gold-soft"
+    >
+      {children}
+    </Link>
+  );
+}
+
+function Tile({ img, label, href, note }: { img: string; label: string; href: string; note?: string }) {
+  return (
+    <div className="flex flex-col items-center text-center">
+      <Link to={href} className="group block w-full overflow-hidden">
+        <img
+          src={asset(img)}
+          alt=""
+          className="aspect-square w-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.04]"
+        />
+      </Link>
+      <h3 className="mt-5 font-display text-[1.55rem] font-medium text-ink">{label}</h3>
+      {note ? (
+        <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.18em] text-muted">{note}</p>
+      ) : null}
+      <p className="mt-4">
+        <GoldButton to={href}>Learn More</GoldButton>
+      </p>
+    </div>
+  );
+}
 
 function Home() {
   return (
     <>
-      <PageHero
-        kicker={homeKicker}
-        title={homeH1}
-        lede={homeLede}
-        image="/images/people/bernard-teaching-nsbt.jpg"
-        alt="The Reverend Dr. A. R. Bernard, Sr., teaching."
-        objectPosition="center 22%"
-      >
-        <Button asChild>
-          <Link to="/admissions/apply">Apply to NSBT</Link>
-        </Button>
-        <Button asChild variant="outline">
-          <Link to="/programs">Explore the degrees</Link>
-        </Button>
-      </PageHero>
-
-      {/* Quick facts */}
-      <div className="bg-paper">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6">
-          <FactBar
-            className="mt-0"
-            items={[
-              { label: "Degrees", value: "Two" },
-              { label: "Credits", value: "36" },
-              { label: "Sessions / year", value: "Five" },
-              { label: "Format", value: "Entirely online" },
-            ]}
-          />
-        </div>
-      </div>
-
-      {/* Why NSBT — the pillars as a clean card grid */}
-      <section className="bg-paper">
-        <PageWidth>
-          <div className="max-w-2xl">
-            <Eyebrow>Why NSBT</Eyebrow>
-            <h2 className="section-title mt-2 text-ink">A graduate school built to finish.</h2>
-            <p className="mt-4 text-[1.05rem] leading-[1.65] text-fg/80">{orlandoNote}</p>
-          </div>
-          <div className="mt-12 grid gap-x-10 gap-y-12 sm:grid-cols-2">
-            {homePillars.map((p, i) => (
-              <div key={p.title} className="border-t-2 border-seal pt-5">
-                <p className="font-mono text-[13px] tracking-widest text-seal">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-2 font-display text-2xl text-ink">{p.title}</h3>
-                <p className="mt-3 text-[1.05rem] leading-[1.65] text-fg/80">{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </PageWidth>
+      {/* Hero — the Founding President teaching */}
+      <section className="bg-ink">
+        <img
+          src={asset("/images/org/hero-bernard.jpg")}
+          alt="The Reverend Dr. A. R. Bernard, Sr., teaching."
+          data-provenance="REAL"
+          className="h-[46vw] max-h-[620px] min-h-[300px] w-full object-cover object-[center_22%]"
+        />
       </section>
 
-      {/* Programs */}
-      <section className="border-y border-rule bg-cream">
+      {/* Title + introduction */}
+      <section className="bg-paper">
         <PageWidth>
-          <Eyebrow>Programs</Eyebrow>
-          <h2 className="section-title mt-2 text-ink">Same school. Two vocations.</h2>
-          <div className="mt-12 grid gap-x-12 gap-y-14 lg:grid-cols-2">
-            {degrees.map((d) => (
-              <article key={d.slug} className="flex flex-col">
-                <img
-                  src={asset(d.photo)}
-                  alt={`The ${d.name}.`}
-                  data-provenance="REAL"
-                  className="aspect-[4/3] w-full object-cover object-top"
-                />
-                <h3 className="mt-6 font-display text-[1.75rem] leading-tight font-medium text-ink">
-                  {d.name}
-                </h3>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {degreeFacts.map((f) => (
-                    <li
-                      key={f}
-                      className="rounded-full border border-rule bg-paper px-3 py-1 text-[13px] text-fg/75"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <p className="mt-5 text-[1.05rem] leading-[1.65] text-fg/85">
-                  {d.slug === "macm" ? macmSummary : maglSummary}
-                </p>
-                <p className="mt-3 text-[0.95rem] text-muted">{noLicensure}</p>
-                <p className="mt-auto pt-6">
-                  <Link to={d.href} className="arrow-link">
-                    Explore the degree
+          <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.4rem]">
+            The New School of Biblical Theology
+          </h1>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-x-14 gap-y-6 text-[1.12rem] leading-[1.7] text-fg/90 md:grid-cols-2">
+            <p>
+              The New School of Biblical Theology (NSBT) is a visionary learning environment that
+              prepares men and women for the ministry challenges of the first quarter of the 21st
+              century, especially in view of the cultural diversities in both North America and the
+              entire globe.
+            </p>
+            <p>
+              If you are looking for a dynamic learning environment that will support and guide the
+              next generation of men and women who will represent an authentic, biblical, culturally
+              focused Christianity, NSBT is such a seminary.
+            </p>
+            <p>
+              The Mission of NSBT is to prepare men and women for effective Christian ministry and
+              leadership in a global context by deepening their understanding of the Bible, attending
+              to intellectual and spiritual formation, and equipping them to be more effective in
+              cultural engagement and public theology.
+            </p>
+            <p>
+              NSBT&rsquo;s vision is to create a dynamic educational institution that fosters growth in
+              the Spirit while preparing leaders to answer Christ&rsquo;s call to ministry and mission
+              in the world today.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 grid max-w-5xl items-start gap-10 md:grid-cols-2">
+            <ul className="space-y-2 text-[1.1rem] text-ink">
+              {aboutLinks.map((l) => (
+                <li key={l.label} className="flex gap-3">
+                  <span aria-hidden className="text-seal">&bull;</span>
+                  <Link to={l.href} className="underline-offset-4 hover:text-seal hover:underline">
+                    {l.label}
                   </Link>
-                </p>
-              </article>
+                </li>
+              ))}
+            </ul>
+            <div className="md:text-right">
+              <Link to="/about/founder" className="arrow-link font-display text-[1.35rem] text-ink">
+                Watch the Introductory Video
+              </Link>
+            </div>
+          </div>
+        </PageWidth>
+      </section>
+
+      {/* Academics */}
+      <section className="border-t border-rule bg-paper">
+        <PageWidth>
+          <SectionTitle>Academics</SectionTitle>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-x-14 gap-y-6 text-[1.08rem] leading-[1.68] text-fg/90 md:grid-cols-2">
+            <p>
+              Learning at the New School of Biblical Theology is entirely online. The main forms of
+              teaching and learning, along with student services and support, are conducted online,
+              embracing a variety of methods including discussion boards, videos, and teleconferencing.
+            </p>
+            <p>
+              Online learning is student-centered. Students are active participants in gathering
+              information and constructing new knowledge, learning from each other as well as from the
+              content of the courses. Each instructor serves more as &ldquo;a guide by the side&rdquo;
+              than &ldquo;the sage on the stage.&rdquo;
+            </p>
+          </div>
+          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+            {academicsTiles.map((t) => (
+              <Tile key={t.label} {...t} />
             ))}
           </div>
         </PageWidth>
       </section>
 
-      {/* Faculty */}
-      <section className="bg-paper">
-        <PageWidth>
-          <Eyebrow>Faculty</Eyebrow>
-          <h2 className="section-title mt-2 text-ink">Scholar-practitioners who teach every course.</h2>
-          <p className="mt-4 max-w-[72ch] text-[1.05rem] leading-[1.65] text-fg/80">{facultyIntro}</p>
-          <div className="mt-12 grid gap-10 sm:grid-cols-3">
-            {faculty.map((p) => (
-              <PersonTile key={p.slug} name={p.name} role={p.role} photo={p.photo} href={p.href} />
-            ))}
-          </div>
-          <p className="mt-10">
-            <Link to="/academics/faculty" className="arrow-link">
-              Meet the full faculty
-            </Link>
-          </p>
-        </PageWidth>
-      </section>
-
-      {/* Founder */}
-      <section className="border-y border-rule bg-cream">
-        <PageWidth>
-          <div className="grid items-center gap-12 md:grid-cols-12">
-            <div className="md:col-span-5">
-              <img
-                src={asset("/images/people/bernard-headshot.jpg")}
-                alt="The Reverend Dr. A. R. Bernard, Sr."
-                data-provenance="REAL"
-                className="aspect-[3/4] w-full object-cover object-top"
-              />
-            </div>
-            <div className="md:col-span-7">
-              <Eyebrow>Founding President</Eyebrow>
-              <h2 className="section-title mt-2 text-ink">The Reverend Dr. A. R. Bernard, Sr.</h2>
-              <p className="mt-5 max-w-[72ch] text-[1.05rem] leading-[1.65] text-fg/85">{founderBlurb}</p>
-              <p className="mt-6">
-                <Link to="/about/founder" className="arrow-link">
-                  About the Founding President
-                </Link>
-              </p>
-            </div>
-          </div>
-        </PageWidth>
-      </section>
-
-      {/* Resources & essentials */}
-      <section className="bg-paper">
-        <PageWidth>
-          <Eyebrow>Resources</Eyebrow>
-          <h2 className="section-title mt-2 text-ink">Library, calendar, and standing.</h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <div className="border-t border-rule pt-6">
-              <h3 className="font-display text-2xl text-ink">Library</h3>
-              <p className="mt-3 text-[1.02rem] leading-[1.6] text-fg/80">{libraryCopy}</p>
-              <p className="mt-5">
-                <Link to="/academics/library" className="arrow-link">
-                  Digital Theological Library
-                </Link>
-              </p>
-            </div>
-            <div className="border-t border-rule pt-6">
-              <h3 className="font-display text-2xl text-ink">Academic calendar</h3>
-              <p className="mt-3 text-[1.02rem] leading-[1.6] text-fg/80">{calendarCopy}</p>
-              <p className="mt-5">
-                <Link to="/events" className="arrow-link">
-                  Calendar
-                </Link>
-              </p>
-            </div>
-            <div className="border-t border-rule pt-6">
-              <h3 className="font-display text-2xl text-ink">Accreditation status</h3>
-              <p
-                className="mt-3 text-[1.02rem] leading-[1.6] text-fg/80"
-                lang="en"
-                translate="no"
-                data-never-translate="true"
-              >
-                {accreditationDisclaimer}
-              </p>
-              <p className="mt-5">
-                <Link to="/about/accreditation" className="arrow-link">
-                  Accreditation Status
-                </Link>
-              </p>
-            </div>
-          </div>
-        </PageWidth>
-      </section>
-
-      {/* Ask NSBT */}
+      {/* Admissions */}
       <section className="border-t border-rule bg-cream">
         <PageWidth>
-          <div className="mx-auto max-w-3xl">
-            <Eyebrow>Ask NSBT</Eyebrow>
-            <h2 className="section-title mt-2 text-ink">Questions? Ask the site.</h2>
-            <p className="mt-4 text-[1.05rem] leading-[1.65] text-fg/80">
-              Search the published pages for admissions, tuition, degrees, and more.
+          <SectionTitle>Admissions</SectionTitle>
+          <div className="mx-auto mt-10 max-w-3xl space-y-6 text-center text-[1.08rem] leading-[1.7] text-fg/90">
+            <p>
+              As part of its wider educational mission, NSBT admits candidates seeking a graduate
+              degree as well as those who wish to enroll in its learning programs without pursuing a
+              degree.
             </p>
-            <div className="mt-8">
-              <AskPanel />
-            </div>
+            <p>
+              Candidates seeking a program leading to a graduate degree are expected to possess an
+              accredited undergraduate degree or its equivalent. A limited number of applicants who do
+              not may be considered on an annual basis. To learn whether you are a potential candidate,
+              request further information from the Director of Admissions.
+            </p>
+          </div>
+          <ul className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-2 text-[1.1rem] text-ink">
+            {admissionsLinks.map((l) => (
+              <li key={l.label} className="flex gap-3">
+                <span aria-hidden className="text-seal">&bull;</span>
+                <Link to={l.href} className="underline-offset-4 hover:text-seal hover:underline">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </PageWidth>
+      </section>
+
+      {/* Current Students */}
+      <section className="border-t border-rule bg-paper">
+        <PageWidth>
+          <SectionTitle>Current Students</SectionTitle>
+          <div className="mx-auto mt-10 max-w-3xl space-y-6 text-[1.06rem] leading-[1.7] text-fg/90">
+            <p>
+              Once you have been notified of your acceptance and have informed the Registrar of your
+              intention to enroll, you will be contacted by the Registration Department with
+              instructions on accessing the NSBT online learning system and contacting your Academic
+              Advisor. Introductory tutorials will guide you through the basics of the system.
+            </p>
+            <p>
+              You must register for all classes you intend to take each academic Session in order to
+              be enrolled, and you may register for subsequent Sessions up to one year in advance.
+              Registration opens online two weeks before each Session and continues until the second
+              week of the Session. The resources below carry the details.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
+            {currentStudentsTiles.map((t) => (
+              <Tile key={t.label} {...t} />
+            ))}
           </div>
         </PageWidth>
       </section>
 
-      {/* Closing call to action */}
-      <section className="bg-ink text-paper">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
-          <div className="grid items-center gap-8 md:grid-cols-12">
-            <div className="md:col-span-8">
-              <h2 className="masthead-title text-[2rem] text-paper sm:text-[2.5rem]">
-                Begin your application.
-              </h2>
-              <p className="mt-4 max-w-2xl text-[1.05rem] leading-[1.65] text-paper/80">
-                Two graduate degrees, taught entirely online, from wherever you already live and
-                serve. The application fee is $50.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap md:col-span-4 md:justify-end">
-              <Button asChild variant="invert">
-                <Link to="/admissions/apply">Apply now</Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link to="/contact">Contact us</Link>
-              </Button>
-            </div>
-          </div>
+      {/* Closing note */}
+      <section className="bg-cream">
+        <div className="mx-auto max-w-3xl px-4 py-16 text-center text-[1.1rem] leading-[1.75] text-fg/85 sm:px-6">
+          <p>
+            Thank you for considering a call to the New School of Biblical Theology. Your support
+            helps make the training of global Christian leaders and the school&rsquo;s reality into the
+            future. It is impossible to thank enough those who give so that others can be equipped for
+            ministry.
+          </p>
+          <p className="mt-6 font-display text-[1.4rem] text-ink">Thank you!</p>
         </div>
+      </section>
+
+      {/* Contact Us */}
+      <section className="border-t border-rule bg-paper">
+        <PageWidth>
+          <SectionTitle>Contact Us</SectionTitle>
+          <p className="mx-auto mt-8 max-w-2xl text-center text-[1.08rem] leading-[1.7] text-fg/90">
+            Interested in earning more information about the New School of Biblical Theology? Have
+            questions? Send us a note and we will be in touch.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/admissions/apply"
+              className="inline-flex items-center bg-seal px-8 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-paper transition-colors hover:bg-seal-soft"
+            >
+              Apply Now
+            </Link>
+            <Link
+              to="/give"
+              className="inline-flex items-center border-2 border-seal px-8 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-seal transition-colors hover:bg-seal hover:text-paper"
+            >
+              Give
+            </Link>
+          </div>
+
+          <form
+            action={`mailto:${STUDENT_EMAIL}`}
+            method="post"
+            encType="text/plain"
+            className="mx-auto mt-12 max-w-2xl"
+          >
+            <div className="grid gap-5 sm:grid-cols-2">
+              <label className="block">
+                <span className="font-sans text-[12px] uppercase tracking-[0.16em] text-muted">First Name</span>
+                <input name="First Name" type="text" className="mt-2 h-12 w-full border border-rule bg-paper px-3 text-fg" />
+              </label>
+              <label className="block">
+                <span className="font-sans text-[12px] uppercase tracking-[0.16em] text-muted">Last Name</span>
+                <input name="Last Name" type="text" className="mt-2 h-12 w-full border border-rule bg-paper px-3 text-fg" />
+              </label>
+            </div>
+            <label className="mt-5 block">
+              <span className="font-sans text-[12px] uppercase tracking-[0.16em] text-muted">Email</span>
+              <input name="Email" type="email" className="mt-2 h-12 w-full border border-rule bg-paper px-3 text-fg" />
+            </label>
+            <label className="mt-5 block">
+              <span className="font-sans text-[12px] uppercase tracking-[0.16em] text-muted">Message</span>
+              <textarea name="Message" rows={5} className="mt-2 w-full border border-rule bg-paper px-3 py-2 text-fg" />
+            </label>
+            <div className="mt-6 flex justify-center">
+              <button
+                type="submit"
+                className="inline-flex items-center bg-gold px-10 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-ink transition-colors hover:bg-gold-soft"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </PageWidth>
       </section>
     </>
   );
