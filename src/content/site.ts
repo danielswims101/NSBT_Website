@@ -34,20 +34,23 @@ export const tuition = {
 export type NavChild = { label: string; href: string };
 export type NavItem = { label: string; href: string; children?: NavChild[] };
 
-/** Top navigation. Catalog, Handbook, Career, and Effectiveness are withheld
- *  from nav (v16 C.1) until those documents are published. Pages remain live. */
+/** Primary navigation, following nsbt.org's structure and mapped to this
+ *  build's routes. "Accreditation" is replaced by the required State
+ *  Authorization page; program names appear in full. */
 export const primaryNav: NavItem[] = [
+  { label: "Home", href: "/" },
   {
     label: "About",
     href: "/about",
     children: [
       { label: "About", href: "/about" },
-      { label: "Mission & Vision", href: "/about/mission" },
-      { label: "Founding President", href: "/about/founder" },
+      { label: "About the Founder", href: "/about/founder" },
       { label: "Executive Vice President", href: "/about/lim" },
       { label: "Board of Trustees", href: "/about/trustees" },
-      { label: "Advisory Council", href: "/about/advisory" },
-      { label: "Accreditation Status", href: "/about/accreditation" },
+      { label: "Mission and Vision", href: "/about/mission" },
+      { label: "Educational Effectiveness", href: "/about/effectiveness" },
+      { label: "Ordination", href: "/admissions/ordination" },
+      { label: "State Authorization", href: "/state-authorization" },
     ],
   },
   {
@@ -55,12 +58,13 @@ export const primaryNav: NavItem[] = [
     href: "/academics",
     children: [
       { label: "Academics", href: "/academics" },
-      { label: "Degrees", href: "/programs" },
+      { label: "Degrees Offered", href: "/programs" },
       { label: "Master of Arts in Christian Ministry", href: "/programs/macm" },
       { label: "Master of Arts in Global Christian Leadership", href: "/programs/magl" },
       { label: "Courses", href: "/academics/courses" },
       { label: "Faculty", href: "/academics/faculty" },
       { label: "Digital Theological Library", href: "/academics/library" },
+      { label: "Academic Catalog", href: "/academics/catalog" },
     ],
   },
   {
@@ -68,30 +72,32 @@ export const primaryNav: NavItem[] = [
     href: "/admissions",
     children: [
       { label: "Admissions", href: "/admissions" },
-      { label: "How to Apply", href: "/admissions/apply" },
+      { label: "Admissions Process", href: "/admissions/apply" },
+      { label: "Request Information", href: "/admissions/request" },
       { label: "Tuition & Fees", href: "/tuition" },
       { label: "Transfer Credit", href: "/admissions/transfer" },
     ],
   },
   {
-    label: "Students",
+    label: "Current Students",
     href: "/students",
     children: [
       { label: "Current Students", href: "/students" },
-      { label: "Office of Student Records and Accounts", href: "/students/records" },
+      { label: "Student Login", href: "/login" },
+      { label: "Student Handbook", href: "/students/handbook" },
       { label: "Student Accessibility", href: "/students/accessibility" },
-      { label: "Technology", href: "/students/tech" },
-    ],
-  },
-  {
-    label: "Alumni",
-    href: "/alumni",
-    children: [
+      { label: "Registrar", href: "/students/records" },
+      { label: "Online Chapel/Worship", href: "/students/chapel" },
       { label: "Alumni", href: "/alumni" },
-      { label: "Give", href: "/give" },
     ],
   },
-  { label: "Apply", href: "/admissions/apply" },
+  { label: "Donate", href: "/give" },
+];
+
+/** Secondary (upper) navigation row, following nsbt.org. */
+export const secondaryNav: NavChild[] = [
+  { label: "Contact Us", href: "/contact" },
+  { label: "Events Calendar", href: "/events" },
 ];
 
 export const footerLinks = [
