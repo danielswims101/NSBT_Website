@@ -230,7 +230,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
+          "href": "/tuition"
         },
         {
           "label": "Write to the Office of Student Records and Accounts",
@@ -238,6 +238,15 @@ export const pages: Record<string, PageMeta> = {
         }
       ]
     }
+  },
+  "/state-authorization": {
+    "h1": "State Authorization",
+    "breadcrumb": "State Authorization",
+    "footer": "State Authorization",
+    "documentTitle": "State Authorization · NSBT",
+    "metaTitle": "State Authorization · NSBT",
+    "description": "The New School of Biblical Theology, Inc. is a religious institution and is exempt from licensure by the Florida Commission for Independent Education.",
+    "nextStep": null
   },
   "/about/effectiveness": {
     "h1": "Institutional Effectiveness",
@@ -272,12 +281,12 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Degrees",
-          "href": "/academics/degrees"
+          "href": "/programs"
         }
       ]
     }
   },
-  "/academics/degrees": {
+  "/programs": {
     "h1": "Same school. Two vocations.",
     "breadcrumb": "Degrees",
     "nav": "Degrees",
@@ -296,7 +305,7 @@ export const pages: Record<string, PageMeta> = {
       ]
     }
   },
-  "/academics/degrees/macm": {
+  "/programs/macm": {
     "h1": "Master of Arts in Christian Ministry",
     "breadcrumb": "Master of Arts in Christian Ministry",
     "nav": "Master of Arts in Christian Ministry",
@@ -314,12 +323,12 @@ export const pages: Record<string, PageMeta> = {
         },
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
+          "href": "/tuition"
         }
       ]
     }
   },
-  "/academics/degrees/magl": {
+  "/programs/magl": {
     "h1": "Master of Arts in Global Christian Leadership",
     "breadcrumb": "Master of Arts in Global Christian Leadership",
     "nav": "Master of Arts in Global Christian Leadership",
@@ -337,10 +346,29 @@ export const pages: Record<string, PageMeta> = {
         },
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
+          "href": "/tuition"
         }
       ]
     }
+  },
+  "/tuition": {
+    "h1": "Tuition and Fees",
+    "breadcrumb": "Tuition and Fees",
+    "nav": "Tuition & Fees",
+    "footer": "Tuition & Fees",
+    "documentTitle": "Tuition and Fees · NSBT",
+    "metaTitle": "Tuition and Fees · NSBT",
+    "description": "The current tuition and fee schedule for The New School of Biblical Theology.",
+    "nextStep": null
+  },
+  "/complaints": {
+    "h1": "Student Complaints",
+    "breadcrumb": "Student Complaints",
+    "footer": "Student Complaints",
+    "documentTitle": "Student Complaints · NSBT",
+    "metaTitle": "Student Complaints · NSBT",
+    "description": "The New School of Biblical Theology's student complaint procedure and the contact information for the Florida Commission for Independent Education.",
+    "nextStep": null
   },
   "/academics/courses": {
     "h1": "Courses",
@@ -356,7 +384,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Degrees",
-          "href": "/academics/degrees"
+          "href": "/programs"
         }
       ]
     }
@@ -375,7 +403,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Degrees",
-          "href": "/academics/degrees"
+          "href": "/programs"
         }
       ]
     }
@@ -455,7 +483,7 @@ export const pages: Record<string, PageMeta> = {
         },
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
+          "href": "/tuition"
         }
       ]
     }
@@ -474,30 +502,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
-        },
-        {
-          "label": "Accreditation status",
-          "href": "/about/accreditation"
-        }
-      ]
-    }
-  },
-  "/admissions/tuition": {
-    "h1": "Tuition & Fees",
-    "breadcrumb": "Tuition & Fees",
-    "nav": "Tuition & Fees",
-    "footer": "Tuition & Fees",
-    "documentTitle": "Tuition & Fees · NSBT",
-    "metaTitle": "Tuition & Fees · NSBT",
-    "description": "NSBT charges tuition by the academic credit. The published rate is $500 per credit. A 50% discount is currently applied to degree-seeking students.",
-    "nextStep": {
-      "heading": "How to apply",
-      "body": "NSBT admits students on a rolling basis.",
-      "links": [
-        {
-          "label": "How to apply",
-          "href": "/admissions/apply"
+          "href": "/tuition"
         },
         {
           "label": "Accreditation status",
@@ -539,7 +544,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
+          "href": "/tuition"
         }
       ]
     }
@@ -558,7 +563,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Tuition & Fees",
-          "href": "/admissions/tuition"
+          "href": "/tuition"
         }
       ]
     }
@@ -596,7 +601,7 @@ export const pages: Record<string, PageMeta> = {
       "links": [
         {
           "label": "Degrees",
-          "href": "/academics/degrees"
+          "href": "/programs"
         }
       ]
     }

@@ -28,8 +28,6 @@ export const tuition = {
   perCredit: 500,
   perSession: 1500,
   program: 18000,
-  discountedPerSession: 750,
-  discountedProgram: 9000,
   note: "All rates and fees are subject to change.",
 } as const;
 
@@ -57,9 +55,9 @@ export const primaryNav: NavItem[] = [
     href: "/academics",
     children: [
       { label: "Academics", href: "/academics" },
-      { label: "Degrees", href: "/academics/degrees" },
-      { label: "Master of Arts in Christian Ministry", href: "/academics/degrees/macm" },
-      { label: "Master of Arts in Global Christian Leadership", href: "/academics/degrees/magl" },
+      { label: "Degrees", href: "/programs" },
+      { label: "Master of Arts in Christian Ministry", href: "/programs/macm" },
+      { label: "Master of Arts in Global Christian Leadership", href: "/programs/magl" },
       { label: "Courses", href: "/academics/courses" },
       { label: "Faculty", href: "/academics/faculty" },
       { label: "Digital Theological Library", href: "/academics/library" },
@@ -71,7 +69,7 @@ export const primaryNav: NavItem[] = [
     children: [
       { label: "Admissions", href: "/admissions" },
       { label: "How to Apply", href: "/admissions/apply" },
-      { label: "Tuition & Fees", href: "/admissions/tuition" },
+      { label: "Tuition & Fees", href: "/tuition" },
       { label: "Transfer Credit", href: "/admissions/transfer" },
     ],
   },
@@ -98,7 +96,7 @@ export const primaryNav: NavItem[] = [
 
 export const footerLinks = [
   { label: "About", href: "/about" },
-  { label: "Degrees", href: "/academics/degrees" },
+  { label: "Degrees", href: "/programs" },
   { label: "Faculty", href: "/academics/faculty" },
   { label: "Admissions", href: "/admissions" },
   { label: "Apply", href: "/admissions/apply" },
@@ -113,7 +111,7 @@ export const degrees = [
     slug: "macm",
     code: "MACM",
     name: "Master of Arts in Christian Ministry",
-    href: "/academics/degrees/macm",
+    href: "/programs/macm",
     photo: "/images/grad/grad-2024-64780.jpg",
     provenance: "REAL",
   },
@@ -121,7 +119,7 @@ export const degrees = [
     slug: "magl",
     code: "MAGL",
     name: "Master of Arts in Global Christian Leadership",
-    href: "/academics/degrees/magl",
+    href: "/programs/magl",
     photo: "/images/grad/grad-2024-65186.jpg",
     provenance: "REAL",
   },

@@ -69,6 +69,11 @@ export const Route = createFileRoute("/_site/$")({
     const path = pathFromSplat(params._splat);
     if (path === "/registrar") throw redirect({ href: "/students/records" });
     if (path === "/apply") throw redirect({ href: "/admissions/apply" });
+    // Program pages moved to their fixed public addresses (cited by institutional documents).
+    if (path === "/academics/degrees") throw redirect({ href: "/programs" });
+    if (path === "/academics/degrees/macm") throw redirect({ href: "/programs/macm" });
+    if (path === "/academics/degrees/magl") throw redirect({ href: "/programs/magl" });
+    if (path === "/admissions/tuition") throw redirect({ href: "/tuition" });
     if (path === "/signin.students") throw redirect({ href: "/login" });
     if (path === "/signin.faculty") throw redirect({ href: "/login" });
     const storeItem = path.startsWith("/store/") ? path.slice("/store/".length) : null;

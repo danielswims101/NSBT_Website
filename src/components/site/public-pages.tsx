@@ -3,7 +3,6 @@ import { useRouterState } from "@tanstack/react-router";
 import { Link } from "@/components/site/link";
 import { AskPanel } from "./ask-panel";
 import { Button } from "./button";
-import { CostExplainer } from "./cost-explainer";
 import { Disclosures } from "./disclosures";
 import { MailLink } from "./mail-link";
 import { PageShell, SectionedPage } from "./page-shell";
@@ -23,6 +22,9 @@ import {
   accessibilityCopy,
   accreditationDisclaimer,
   accreditationFaq,
+  stateAuthorization,
+  tuitionPending,
+  complaintsPending,
   aidCopy,
   alumniCopy,
   alumniStrip,
@@ -69,7 +71,6 @@ import {
   ordinationUnpublished,
   orlandoNote,
   policiesUnpublished,
-  refundExample,
   refundSchedule,
   refundsCopy,
   religiousExemption,
@@ -81,9 +82,6 @@ import {
   transferCopy,
   trusteesCurrentlyServing,
   trusteesIntro,
-  tuitionByCredit,
-  tuitionDiscount,
-  tuitionPublished,
   vision,
 } from "@/content/copy";
 import { parseCourses } from "@/content/courses";
@@ -214,7 +212,7 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/about/accreditation":
       return (
-        <PageShell path={path} related={[{ label: "Tuition & Fees", href: "/admissions/tuition" }, { label: "Transfer Credit", href: "/admissions/transfer" }]}>
+        <PageShell path={path} related={[{ label: "Tuition & Fees", href: "/tuition" }, { label: "Transfer Credit", href: "/admissions/transfer" }]}>
           <FactBar
             className="mt-0"
             items={[
@@ -231,6 +229,14 @@ export function PublicPage({ path }: { path: string }) {
           <QaBlock items={accreditationFaq} />
         </PageShell>
       );
+    case "/state-authorization":
+      return (
+        <PageShell path={path}>
+          <p lang="en" translate="no" data-never-translate="true">
+            {stateAuthorization}
+          </p>
+        </PageShell>
+      );
     case "/about/effectiveness":
       return unpublished(path, effectivenessUnpublished, [
         { label: "About", href: "/about" },
@@ -238,11 +244,11 @@ export function PublicPage({ path }: { path: string }) {
       ]);
     case "/academics":
       return <AcademicsHub />;
-    case "/academics/degrees":
+    case "/programs":
       return <DegreesPage />;
-    case "/academics/degrees/macm":
+    case "/programs/macm":
       return <DegreePage slug="macm" />;
-    case "/academics/degrees/magl":
+    case "/programs/magl":
       return <DegreePage slug="magl" />;
     case "/academics/courses":
       return <CoursesPage />;
@@ -299,7 +305,7 @@ export function PublicPage({ path }: { path: string }) {
     case "/academics/policies":
       return unpublished(path, policiesUnpublished, [
         { label: "Academics", href: "/academics" },
-        { label: "Tuition & Fees", href: "/admissions/tuition" },
+        { label: "Tuition & Fees", href: "/tuition" },
         { label: "Transfer Credit", href: "/admissions/transfer" },
       ]);
     case "/admissions":
@@ -308,7 +314,7 @@ export function PublicPage({ path }: { path: string }) {
           path={path}
           related={[
             { label: "How to apply", href: "/admissions/apply" },
-            { label: "Tuition & Fees", href: "/admissions/tuition" },
+            { label: "Tuition & Fees", href: "/tuition" },
             { label: "Transfer Credit", href: "/admissions/transfer" },
             { label: "Accreditation Status", href: "/about/accreditation" },
           ]}
@@ -339,67 +345,18 @@ export function PublicPage({ path }: { path: string }) {
           </p>
         </PageShell>
       );
-    case "/admissions/tuition":
-      return (
-        <SectionedPage
-          path={path}
-          sections={[
-            {
-              id: "rates",
-              title: "Tuition",
-              body: (
-                <>
-                  <p>{tuitionByCredit}</p>
-                  <p>{tuitionPublished}</p>
-                </>
-              ),
-            },
-            { id: "discount", title: "The current discount", body: <p>{tuitionDiscount}</p> },
-            { id: "fees", title: "Fees", body: <p>{feesCopy}</p> },
-            { id: "cancellation", title: "Cancellation", body: <p>{cancellationCopy}</p> },
-            {
-              id: "refunds",
-              title: "Refunds",
-              body: (
-                <>
-                  <p>{refundsCopy}</p>
-                  <table className="mt-6 w-full text-left text-[17px]">
-                    <caption className="sr-only">Tuition refund schedule</caption>
-                    <thead>
-                      <tr className="border-b border-rule">
-                        <th className="py-2 font-medium">Week</th>
-                        <th className="py-2 font-medium">Refund</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {refundSchedule.map(([w, r]) => (
-                        <tr key={w} className="border-b border-rule">
-                          <td className="py-2">{w}</td>
-                          <td className="py-2 tabular-nums">{r}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  <p className="mt-6">{refundExample}</p>
-                </>
-              ),
-            },
-            { id: "aid", title: "Financial aid", body: <p>{aidCopy}</p> },
-            {
-              id: "explainer",
-              title: "Cost explainer",
-              body: (
-                <>
-                  <CostExplainer />
-                  <p className="mt-8" lang="en" translate="no" data-never-translate="true">
-                    {accreditationDisclaimer}
-                  </p>
-                </>
-              ),
-            },
-          ]}
-        />
-      );
+    case "/tuition":
+      return unpublished(path, tuitionPending, [
+        { label: "Master of Arts in Christian Ministry", href: "/programs/macm" },
+        { label: "Master of Arts in Global Christian Leadership", href: "/programs/magl" },
+        { label: "Complaints", href: "/complaints" },
+      ]);
+    case "/complaints":
+      return unpublished(path, complaintsPending, [
+        { label: "State Authorization", href: "/state-authorization" },
+        { label: "Tuition & Fees", href: "/tuition" },
+        { label: "Contact", href: "/contact" },
+      ]);
     case "/admissions/transfer":
       return (
         <PageShell path={path} related={[{ label: "Admissions", href: "/admissions" }, { label: "How to apply", href: "/admissions/apply" }]}>
@@ -408,11 +365,11 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/admissions/cancellation":
       return (
-        <PageShell path={path} related={[{ label: "Tuition & Fees", href: "/admissions/tuition" }, { label: "Admissions", href: "/admissions" }]}>
+        <PageShell path={path} related={[{ label: "Tuition & Fees", href: "/tuition" }, { label: "Admissions", href: "/admissions" }]}>
           <p>{cancellationCopy}</p>
           <p className="mt-5">
             The published rates and the refund schedule are on the{" "}
-            <Link to="/admissions/tuition" className="underline-offset-4 hover:underline">
+            <Link to="/tuition" className="underline-offset-4 hover:underline">
               Tuition & Fees
             </Link>{" "}
             page.
@@ -421,10 +378,10 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/admissions/refunds":
       return (
-        <PageShell path={path} related={[{ label: "Tuition & Fees", href: "/admissions/tuition" }, { label: "Cancellation", href: "/admissions/cancellation" }]}>
+        <PageShell path={path} related={[{ label: "Tuition & Fees", href: "/tuition" }, { label: "Cancellation", href: "/admissions/cancellation" }]}>
           <p>
             The refund schedule is published once, on the{" "}
-            <Link to="/admissions/tuition" className="underline-offset-4 hover:underline">
+            <Link to="/tuition" className="underline-offset-4 hover:underline">
               Tuition & Fees
             </Link>{" "}
             page.
@@ -486,7 +443,7 @@ export function PublicPage({ path }: { path: string }) {
           related={[
             { label: "Current Students", href: "/students" },
             { label: "Contact", href: "/contact" },
-            { label: "Tuition & Fees", href: "/admissions/tuition" },
+            { label: "Tuition & Fees", href: "/tuition" },
           ]}
         >
           <p>
@@ -655,7 +612,7 @@ function AcademicsHub() {
       />
       <div className="mt-16 grid gap-12 sm:grid-cols-2">
         <HubTile
-          href="/academics/degrees"
+          href="/programs"
           image="/images/grad/grad-2024-stage.jpg"
           alt="An NSBT hooding ceremony at Christian Cultural Center, Brooklyn."
           title="Degrees"
@@ -772,7 +729,7 @@ function TrusteesPage() {
 function DegreesPage() {
   return (
     <PageShell
-      path="/academics/degrees"
+      path="/programs"
       image="/images/grad/grad-2025-class.jpg"
       alt="NSBT graduates at commencement, Christian Cultural Center, Brooklyn."
       objectPosition="center 18%"
@@ -806,7 +763,7 @@ function DegreesPage() {
 }
 
 function DegreePage({ slug }: { slug: "macm" | "magl" }) {
-  const path = slug === "macm" ? "/academics/degrees/macm" : "/academics/degrees/magl";
+  const path = slug === "macm" ? "/programs/macm" : "/programs/magl";
   const summary = slug === "macm" ? macmSummary : maglSummary;
   const structure = slug === "macm" ? macmStructure : maglStructure;
   const field = slug === "macm" ? macmFieldEd : maglFieldEd;
@@ -816,7 +773,7 @@ function DegreePage({ slug }: { slug: "macm" | "magl" }) {
   return (
     <PageShell
       path={path}
-      kicker={degree.code}
+      kicker="Graduate degree"
       image={degree.photo}
       alt={`The ${degree.name}.`}
       objectPosition="center 18%"
@@ -836,8 +793,8 @@ function DegreePage({ slug }: { slug: "macm" | "magl" }) {
         items={[
           { label: "Credits", value: "36" },
           { label: "Format", value: "Live, online" },
-          { label: "Tuition", value: "$18,000" },
-          { label: "Discount", value: "$9,000" },
+          { label: "Length", value: "Two to five years" },
+          { label: "Sessions", value: "Five a year" },
         ]}
       />
       <p className="mt-10 text-[15px] text-muted">{degreeMeta}</p>
@@ -873,9 +830,14 @@ function DegreePage({ slug }: { slug: "macm" | "magl" }) {
       <h2 className="mt-12 font-display text-[28px] font-medium text-ink sm:text-[37px]">The capstone</h2>
       <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65]">{capstoneCopy}</p>
       <h2 className="mt-12 font-display text-[28px] font-medium text-ink sm:text-[37px]">Cost</h2>
-      <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65]">{tuitionPublished}</p>
-      <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65]">{tuitionDiscount}</p>
-      <CostExplainer />
+      <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65]">
+        The current tuition and fee schedule is published on the{" "}
+        <Link to="/tuition" className="underline-offset-4 hover:underline">
+          Tuition and Fees
+        </Link>{" "}
+        page.
+      </p>
+      <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65]">{noLicensure}</p>
       <h2 className="mt-12 font-display text-[28px] font-medium text-ink sm:text-[37px]">Program learning outcomes</h2>
       <p className="mt-4 max-w-[72ch] text-[17px] leading-[1.65]">Upon successful completion, candidates will be able to:</p>
       <ol className="mt-4 max-w-[72ch] list-decimal space-y-3 pl-5 text-[17px] leading-[1.65]">
@@ -1157,7 +1119,7 @@ function FindPage() {
   const corpus = [
     { title: "The New School of Biblical Theology", href: "/", summary: aboutLede },
     { title: "Accreditation status", href: "/about/accreditation", summary: accreditationDisclaimer },
-    { title: "Tuition & Fees", href: "/admissions/tuition", summary: tuitionPublished },
+    { title: "Tuition & Fees", href: "/tuition", summary: "The current tuition and fee schedule." },
     { title: "How to apply", href: "/admissions/apply", summary: rollingAdmissions },
     { title: "Courses", href: "/academics/courses", summary: "Course descriptions for the Master of Arts programs." },
     { title: "Faculty", href: "/academics/faculty", summary: facultyIntro },
@@ -1168,7 +1130,7 @@ function FindPage() {
     { title: "Board of Trustees", href: "/about/trustees", summary: trusteesIntro },
     { title: "James Halek", href: "/about/trustees/halek", summary: people.halek.lede },
     { title: "Larry H. Weiss, Esq.", href: "/about/trustees/weiss", summary: people.weiss.lede },
-    { title: "Degrees", href: "/academics/degrees", summary: `${macmSummary} ${maglSummary}` },
+    { title: "Degrees", href: "/programs", summary: `${macmSummary} ${maglSummary}` },
     { title: "Alumni", href: "/alumni", summary: alumniCopy },
     { title: "Give", href: "/give", summary: giveCopy },
     { title: "Current Students", href: "/students", summary: studentSupport },

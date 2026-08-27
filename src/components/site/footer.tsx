@@ -14,15 +14,16 @@ const footerCols = [
       { label: "Mission & Vision", href: "/about/mission" },
       { label: "Founding President", href: "/about/founder" },
       { label: "Board of Trustees", href: "/about/trustees" },
+      { label: "State Authorization", href: "/state-authorization" },
       { label: "Accreditation Status", href: "/about/accreditation" },
     ],
   },
   {
     title: "Academics",
     links: [
-      { label: "Degrees", href: "/academics/degrees" },
-      { label: "Master of Arts in Christian Ministry", href: "/academics/degrees/macm" },
-      { label: "Master of Arts in Global Christian Leadership", href: "/academics/degrees/magl" },
+      { label: "Degrees", href: "/programs" },
+      { label: "Master of Arts in Christian Ministry", href: "/programs/macm" },
+      { label: "Master of Arts in Global Christian Leadership", href: "/programs/magl" },
       { label: "Faculty", href: "/academics/faculty" },
       { label: "Library", href: "/academics/library" },
     ],
@@ -31,7 +32,7 @@ const footerCols = [
     title: "Admissions",
     links: [
       { label: "How to apply", href: "/admissions/apply" },
-      { label: "Tuition & Fees", href: "/admissions/tuition" },
+      { label: "Tuition & Fees", href: "/tuition" },
       { label: "Current Students", href: "/students" },
       { label: "Contact", href: "/contact" },
       { label: "Give", href: "/give" },

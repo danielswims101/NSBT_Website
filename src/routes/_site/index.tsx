@@ -55,7 +55,7 @@ function Home() {
           <Link to="/admissions/apply">Apply to NSBT</Link>
         </Button>
         <Button asChild variant="outline">
-          <Link to="/academics/degrees">Explore the degrees</Link>
+          <Link to="/programs">Explore the degrees</Link>
         </Button>
       </PageHero>
 

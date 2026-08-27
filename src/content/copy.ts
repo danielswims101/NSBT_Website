@@ -1,9 +1,20 @@
 export const accreditationDisclaimer = `The New School of Biblical Theology is not accredited. Because NSBT is not accredited, credits and degrees earned at NSBT may not transfer to or be recognized by other institutions, employers, or licensing bodies, and NSBT does not participate in the Federal Student Aid programs.`;
 
+// Interim copy for the fixed-address pages whose official content is supplied
+// separately (the tuition & fee schedule and the enrollment-agreement complaint
+// procedure). Replace with the verbatim documents when they are provided.
+export const tuitionPending = `The current tuition and fee schedule is maintained by the Office of Student Records and Accounts. It is being published here in full. For the current schedule in the meantime, write to the Office of Student Records and Accounts.`;
+
+export const complaintsPending = `The New School of Biblical Theology's student complaint procedure, and the contact information for the Florida Commission for Independent Education, are set out in the institution's enrollment agreement. They are being published here in full, exactly as printed in that agreement.`;
+
+// Fixed language for /state-authorization. Cited by institutional documents —
+// carried verbatim, with nothing that qualifies it. Do not edit without authorization.
+export const stateAuthorization = `The New School of Biblical Theology, Inc. is a religious institution and is exempt from licensure by the Florida Commission for Independent Education. Documentation of this exemption is available from the institution on request.`;
+
 export const religiousExemption = `The New School of Biblical Theology, Inc. holds a religious exemption from licensure by the Florida Department of Education, Commission for Independent Education, under Section 1005.06(1)(f), Florida Statutes. NSBT is exempt, not licensed. This religious exemption is not accreditation and is not an approval or endorsement of the institution or the quality of its programs. NSBT’s current Letter of Exemption covers the period ending November 30, 2026. The religious exemption applies in Florida and does not travel to any other state.`;
 
 export const degreeMeta =
-  "36 credits · live seminar format · study from where you serve · two to five years · $18,000, or $9,000 with the current discount";
+  "36 credits · live seminar format · study from where you serve · two to five years";
 
 export const noLicensure = "Neither degree leads to professional licensure.";
 
@@ -22,7 +33,7 @@ export const homePillars = [
   },
   {
     title: "Built to finish",
-    body: "Each degree is 36 credits across five eight-week sessions a year. Most students complete the degree in two to five years. Tuition is currently $750 for a three-credit course, which is 50% off of the published rate of $1,500.",
+    body: "Each degree is 36 credits across five eight-week sessions a year. Most students complete the degree in two to five years.",
   },
   {
     title: "One teaching foundation",
@@ -155,7 +166,6 @@ Provisional admission. An applicant permitted to begin coursework before the adm
 
 export const tuitionByCredit = `NSBT charges tuition by the academic credit. Every figure on this page is the published rate.`;
 export const tuitionPublished = `Tuition is $500 per academic credit. A standard three-credit course is $1,500. A 36-credit degree is $18,000 at the published rate.`;
-export const tuitionDiscount = `A 50% tuition discount is currently applied to degree-seeking students. Tuition is currently $750 for a three-credit course, which is 50% off of the published rate of $1,500. Under the discount, tuition is $250 per academic credit and a 36-credit degree is $9,000. Students enrolled under the discount keep the discounted rate through completion of their program. The discount applies to tuition and not to fees. All rates and fees are subject to change. An ending date for the discount will be announced when it is available.`;
 export const feesCopy = `A one-time application fee of $50 applies. It is refundable only within the five-calendar-day cancellation window described below. NSBT charges no registration fee. A Graduation Fee of $250 is charged. A separate Transcript Fee is charged for issuing a transcript. Payment is made through Populi.`;
 export const cancellationCopy = `A student has five calendar days after signing an enrollment agreement to cancel enrollment and receive a full refund of all monies paid to NSBT, including the application fee.`;
 export const refundsCopy = `Any money due is refunded within 30 days of the student’s notice of cancellation or withdrawal. Fees are not refundable, except the application fee within the five-calendar-day cancellation window.`;
@@ -167,10 +177,9 @@ export const refundSchedule: [string, string][] = [
   ["Week 5", "20% of tuition refunded"],
   ["Weeks 6 through 8", "0% of tuition refunded"],
 ];
-export const refundExample = `The refund is a percentage of the tuition the student was actually charged. A student charged the current discounted rate of $750 for one three-credit course who submits notice of withdrawal during Week 3 receives 60% of $750, which is $450, paid within 30 days.`;
 export const aidCopy = `NSBT does not participate in the Federal Student Aid programs, and federal student loans are not available to NSBT students. A limited number of merit-based scholarships are available. Affiliated ministry partners are charged a flat rate of $500 per three-credit course. For current scholarship information, please write to the Office of Student Records and Accounts.`;
 export const ratesNote = `These figures are the published rates. Rates and fees are subject to change.`;
-export const costExplainerLead = `The rates above are the published rates and the discounted rates.`;
+export const costExplainerLead = `The rates above are the published rates.`;
 
 export const transferCopy = `Credit earned at another institution is evaluated case by case on course content, learning outcomes, and credit hours.
 

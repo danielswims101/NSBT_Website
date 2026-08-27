@@ -27,7 +27,7 @@ const HUB_ART: Record<string, { image: string; alt: string; objectPosition?: str
     alt: "An NSBT commencement procession at Christian Cultural Center, Brooklyn.",
     objectPosition: "center 18%",
   },
-  "/academics/degrees": {
+  "/programs": {
     image: "/images/grad/grad-2025-class.jpg",
     alt: "NSBT graduates at commencement, Christian Cultural Center, Brooklyn.",
     objectPosition: "center 18%",
