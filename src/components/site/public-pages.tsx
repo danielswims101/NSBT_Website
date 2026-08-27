@@ -238,10 +238,21 @@ export function PublicPage({ path }: { path: string }) {
         </PageShell>
       );
     case "/about/effectiveness":
-      return unpublished(path, effectivenessUnpublished, [
-        { label: "About", href: "/about" },
-        { label: "Accreditation Status", href: "/about/accreditation" },
-      ]);
+      return (
+        <PageShell
+          path={path}
+          image="/images/org/effectiveness.jpg"
+          alt="NSBT students meeting."
+          objectPosition="center 40%"
+          related={[
+            { label: "About", href: "/about" },
+            { label: "Mission and Vision", href: "/about/mission" },
+            { label: "State Authorization", href: "/state-authorization" },
+          ]}
+        >
+          <p>{effectivenessUnpublished}</p>
+        </PageShell>
+      );
     case "/academics":
       return <AcademicsHub />;
     case "/programs":
@@ -391,11 +402,41 @@ export function PublicPage({ path }: { path: string }) {
     case "/admissions/request":
       return <RequestPage />;
     case "/admissions/ordination":
-      return unpublished(path, ordinationUnpublished, [
-        { label: "Admissions", href: "/admissions" },
-        { label: "How to apply", href: "/admissions/apply" },
-        { label: "Contact", href: "/contact" },
-      ]);
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Admissions", href: "/admissions" },
+            { label: "How to apply", href: "/admissions/apply" },
+            { label: "Contact", href: "/contact" },
+          ]}
+        >
+          <p>
+            NSBT seeks to prepare candidates for ministry and leadership in both the church and the
+            wider world. While there are a variety of ministries, from the days of the New Testament
+            some in the church have been &ldquo;set apart&rdquo; for the particular office of pastoral
+            ministry. Most Christian communions call the persons who are called to these positions
+            &ldquo;ordained&rdquo; ministers, and the process they go through &ldquo;ordination.&rdquo;
+          </p>
+          <p className="mt-5">
+            Ordination in all branches of the Christian tradition is something done by the churches
+            themselves. Earning a theological degree might be a requirement a church asks of a
+            candidate being considered for ordination, but holding a degree is never a guarantee that
+            a particular church will proceed to ordain you.
+          </p>
+          <p className="mt-5">
+            If you are considering ordained ministry, we encourage you to speak with the appropriate
+            person or persons responsible for this in your church, denomination, or communion. NSBT
+            would be happy to answer any inquiries you have regarding ordination, as well as questions
+            about the content and appropriateness of our programs for preparing you for ministry,
+            whether ordained or not.
+          </p>
+          <p className="mt-5">
+            Neither NSBT degree confers ordination; ordination is a church act. For questions, write
+            to the Office of Student Records and Accounts.
+          </p>
+        </PageShell>
+      );
     case "/students":
       return (
         <PageShell
