@@ -112,12 +112,44 @@ export function PublicPage({ path }: { path: string }) {
       return <AboutPage />;
     case "/about/mission":
       return (
-        <PageShell path={path} related={[{ label: "About", href: "/about" }, { label: "Founding President", href: "/about/founder" }, { label: "Accreditation Status", href: "/about/accreditation" }]}>
-          <h2 className="font-display text-2xl text-ink">Mission</h2>
-          <p className="mt-4">{mission}</p>
-          <h2 className="pt-8 font-display text-2xl text-ink">Vision</h2>
-          <p className="mt-4">{vision}</p>
-        </PageShell>
+        <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+          <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">
+            Mission &amp; Vision
+          </h1>
+          <div className="mt-14 grid items-center gap-10 md:grid-cols-2">
+            <img
+              src={asset("/images/org/mission-1.jpg")}
+              alt="NSBT students studying together."
+              data-provenance="REAL"
+              className="aspect-[4/5] w-full object-cover"
+            />
+            <div>
+              <h2 className="font-sans text-[15px] font-semibold tracking-[0.14em] text-seal uppercase">Mission</h2>
+              <p className="mt-4 font-display text-[1.5rem] leading-[1.4] font-medium text-ink">{mission}</p>
+              <p className="mt-8">
+                <Link
+                  to="/admissions/apply"
+                  className="inline-flex items-center bg-seal px-8 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-paper transition-colors hover:bg-seal-soft"
+                >
+                  Apply Now
+                </Link>
+              </p>
+            </div>
+          </div>
+          <hr className="my-14 border-rule" />
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="font-sans text-[15px] font-semibold tracking-[0.14em] text-seal uppercase">Vision</h2>
+              <p className="mt-4 font-display text-[1.5rem] leading-[1.4] font-medium text-ink">{vision}</p>
+            </div>
+            <img
+              src={asset("/images/org/mission-2.jpg")}
+              alt="A graduation cap atop a stack of books."
+              data-provenance="REAL"
+              className="aspect-square w-full object-cover"
+            />
+          </div>
+        </PageWidth>
       );
     case "/about/founder":
       return <FounderPage />;
