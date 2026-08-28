@@ -32,12 +32,12 @@ const aboutLinks = [
 ];
 
 const academicsTiles = [
-  { label: "Academic Excellence", href: "/academics/excellence", img: "/images/org/tile-academic-excellence.jpg" },
-  { label: "Degrees Offered", href: "/programs", img: "/images/org/tile-degrees.jpg" },
-  { label: "Faculty", href: "/academics/faculty", img: "/images/org/tile-faculty.jpg", note: "For Students Only" },
-  { label: "Digital Theological Library", href: "/academics/library", img: "/images/org/tile-dtl.jpg" },
-  { label: "Sample Course", href: "/academics/sample-course", img: "/images/org/tile-sample-course.jpg" },
-  { label: "Online Learning", href: "/academics/online-learning", img: "/images/org/tile-online-learning.jpg" },
+  { label: "Academic Excellence", href: "/academics/excellence", img: "/images/org/t-acad-excellence.jpg" },
+  { label: "Degrees Offered", href: "/programs", img: "/images/org/t-degrees.jpg" },
+  { label: "Faculty", href: "/academics/faculty", img: "/images/org/t-faculty.jpg", note: "For Students Only" },
+  { label: "Digital Theological Library", href: "/academics/library", img: "/images/org/t-dtl.jpg" },
+  { label: "Sample Course", href: "/academics/sample-course", img: "/images/org/t-sample.jpg" },
+  { label: "Online Learning", href: "/academics/online-learning", img: "/images/org/t-online.jpg" },
 ];
 
 const admissionsLinks = [
@@ -49,12 +49,12 @@ const admissionsLinks = [
 ];
 
 const currentStudentsTiles = [
-  { label: "Student Login", href: "/login", img: "/images/org/cs-student-login.jpg" },
-  { label: "Calendar, Schedules & Forms", href: "/events", img: "/images/org/cs-calendar.jpg" },
-  { label: "Student Handbook", href: "/students/handbook", img: "/images/org/cs-handbook.jpg", note: "For Students Only" },
-  { label: "Registrar", href: "/students/records", img: "/images/org/cs-registrar.jpg" },
-  { label: "Online Chapel/Worship", href: "/students/chapel", img: "/images/org/cs-chapel.jpg" },
-  { label: "Online Prayers", href: "/students/chapel", img: "/images/org/cs-prayers.jpg" },
+  { label: "Student Login", href: "/login", img: "/images/org/t-login.jpg" },
+  { label: "Calendar, Schedules & Forms", href: "/events", img: "/images/org/t-calendar.jpg" },
+  { label: "Student Handbook", href: "/students/handbook", img: "/images/org/t-handbook.jpg", note: "For Students Only" },
+  { label: "Registrar", href: "/students/records", img: "/images/org/t-registrar.jpg" },
+  { label: "Online Chapel/Worship", href: "/students/chapel", img: "/images/org/t-chapel.jpg" },
+  { label: "Online Prayers", href: "/students/prayers", img: "/images/org/t-prayers.jpg" },
 ];
 
 function SectionTitle({ children, id }: { children: string; id?: string }) {
@@ -76,10 +76,11 @@ function GoldButton({ to, children }: { to: string; children: string }) {
   );
 }
 
-function Tile({ img, label, href, note }: { img: string; label: string; href: string; note?: string }) {
-  // nsbt.org: two per row, each an image on the left with the title/button to its right.
+function Tile({ img, label, href, note, index }: { img: string; label: string; href: string; note?: string; index: number }) {
+  // nsbt.org alternates by row: row 1 images left, row 2 images right, row 3 left…
+  const imageRight = Math.floor(index / 2) % 2 === 1;
   return (
-    <div className="flex items-center gap-6">
+    <div className={`flex items-center gap-6 ${imageRight ? "flex-row-reverse" : ""}`}>
       <Link to={href} className="group block w-1/2 shrink-0 overflow-hidden">
         <img
           src={asset(img)}
@@ -183,8 +184,8 @@ function Home() {
             </p>
           </div>
           <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
-            {academicsTiles.map((t) => (
-              <Tile key={t.label} {...t} />
+            {academicsTiles.map((t, i) => (
+              <Tile key={t.label} index={i} {...t} />
             ))}
           </div>
         </PageWidth>
@@ -239,8 +240,8 @@ function Home() {
             </p>
           </div>
           <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
-            {currentStudentsTiles.map((t) => (
-              <Tile key={t.label} {...t} />
+            {currentStudentsTiles.map((t, i) => (
+              <Tile key={t.label} index={i} {...t} />
             ))}
           </div>
         </PageWidth>
