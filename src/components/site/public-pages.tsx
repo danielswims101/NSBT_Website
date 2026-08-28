@@ -1191,27 +1191,81 @@ function CoursesPage() {
   );
 }
 
+const facultyDirectory: { name: string; photo: string; href?: string; titles: string[] }[] = [
+  {
+    name: "Dr. A. R. Bernard, Sr.",
+    photo: "/images/people/bernard-headshot.jpg",
+    href: "/about/founder",
+    titles: ["Founding President", "Professor of Public Theology"],
+  },
+  {
+    name: "Dr. Jimmy Lim",
+    photo: "/images/people/lim-official.jpg",
+    href: "/about/lim",
+    titles: ["Executive Vice President", "Professor of Reformed Theology and Public Life"],
+  },
+  {
+    name: "Dr. Onorio Chaparro",
+    photo: "/images/people/chaparro.jpg",
+    href: "/academics/faculty/chaparro",
+    titles: ["Academic Dean", "Director of Admissions", "Professor of Pastoral Theology and Ministry"],
+  },
+  {
+    name: "Dr. Dale Irvin",
+    photo: "/images/people/irvin-official.jpg",
+    href: "/academics/faculty/irvin",
+    titles: ["Director of Strategic Planning", "Professor of World Christianity"],
+  },
+  {
+    name: "Dr. Angela White",
+    photo: "/images/people/white-official.jpg",
+    href: "/academics/faculty/white",
+    titles: [
+      "Dean of Institutional Effectiveness and Academic Programs and Director of Field Education",
+      "Professor of Educational Leadership",
+    ],
+  },
+  {
+    name: "Dr. Archie Wright",
+    photo: "/images/people/wright.jpg",
+    titles: ["Adjunct Professor"],
+  },
+];
+
 function FacultyPage() {
   return (
-    <PageShell path="/academics/faculty">
-      <p className="max-w-[72ch] text-[17px] leading-[1.65]">{facultyIntro}</p>
-      <div className="mt-12 grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-        {[...faculty, people.lim].map((p) => (
-          <PersonTile
-            key={p.slug}
-            name={p.name}
-            role={p.role}
-            title={
-              p.education[0]
-                ? `${p.education[0].degree}${p.education[0].field ? `, ${p.education[0].field}` : ""}, ${p.education[0].school}${p.education[0].year ? `, ${p.education[0].year}` : ""}.`
-                : undefined
-            }
-            photo={p.photo}
-            href={p.href}
-          />
-        ))}
+    <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+      <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.2rem]">Faculty</h1>
+      <div className="mx-auto mt-14 grid max-w-5xl gap-x-12 gap-y-14 sm:grid-cols-2">
+        {facultyDirectory.map((p) => {
+          const nameEl = p.href ? (
+            <Link to={p.href} className="uppercase tracking-[0.08em] text-seal underline-offset-4 hover:underline">
+              {p.name}
+            </Link>
+          ) : (
+            <span className="uppercase tracking-[0.08em] text-seal">{p.name}</span>
+          );
+          return (
+            <article key={p.name} className="flex gap-5">
+              <img
+                src={asset(p.photo)}
+                alt={p.name}
+                data-provenance="REAL"
+                className="h-32 w-32 shrink-0 object-cover"
+              />
+              <div className="pt-1">
+                <h2 className="font-sans text-[15px] font-medium">{nameEl}</h2>
+                <div className="mt-3 space-y-1 text-[1.05rem] leading-[1.5] text-fg/90">
+                  {p.titles.map((t) => (
+                    <p key={t}>{t}</p>
+                  ))}
+                </div>
+              </div>
+            </article>
+          );
+        })}
       </div>
-    </PageShell>
+    </PageWidth>
   );
 }
 
