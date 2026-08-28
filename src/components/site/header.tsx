@@ -65,7 +65,7 @@ export function SiteHeader() {
                     />
                   </Link>
                   {item.children ? (
-                    <div className="absolute top-full left-0 z-50 hidden min-w-72 border border-rule border-t-2 border-t-seal bg-cream py-2 shadow-[var(--shadow-lift)] group-hover:block group-focus-within:block">
+                    <div className="absolute top-full left-0 z-50 hidden min-w-72 border border-rule border-t-2 border-t-seal bg-cream py-2 shadow-[var(--shadow-lift)] group-hover:block">
                       {item.children.map((child) => (
                         <Link
                           key={child.href}
