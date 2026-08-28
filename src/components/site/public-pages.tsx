@@ -926,58 +926,14 @@ function AlumniPage() {
 function AcademicsHub() {
   const paragraphs = academicsIntro.split("\n\n");
   return (
-    <PageShell
-      path="/academics"
-      image="/images/grad/grad-2023-banner.jpg"
-      alt="An NSBT commencement procession at Christian Cultural Center, Brooklyn."
-      objectPosition="center 18%"
-      lede="Two graduate degrees, taught entirely online, from wherever students already serve."
-    >
-      <div className="max-w-[66ch] space-y-5 text-[1.125rem] leading-[1.72]">
+    <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+      <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">Academics</h1>
+      <div className="mx-auto mt-12 grid max-w-5xl gap-x-14 gap-y-6 text-[1.08rem] leading-[1.7] text-fg/90 md:grid-cols-2">
         {paragraphs.map((p) => (
           <p key={p.slice(0, 40)}>{p}</p>
         ))}
       </div>
-      <FactBar
-        items={[
-          { label: "Degrees", value: "Two" },
-          { label: "Credits", value: "36" },
-          { label: "Sessions", value: "Five" },
-          { label: "Format", value: "Online" },
-        ]}
-      />
-      <div className="mt-16 grid gap-12 sm:grid-cols-2">
-        <HubTile
-          href="/programs"
-          image="/images/grad/grad-2024-stage.jpg"
-          alt="An NSBT hooding ceremony at Christian Cultural Center, Brooklyn."
-          title="Degrees"
-          body="The Master of Arts in Christian Ministry and the Master of Arts in Global Christian Leadership."
-        />
-        <HubTile
-          href="/academics/courses"
-          image="/images/grad/grad-2024-stairs.jpg"
-          alt="NSBT graduates at commencement."
-          title="Courses"
-          body="Titles and descriptions for the courses that constitute both degrees."
-        />
-        <HubTile
-          href="/academics/faculty"
-          image="/images/people/bernard-teaching.jpg"
-          alt="Teaching in a live NSBT seminar."
-          title="Faculty"
-          body="The faculty who teach these courses, with the degrees they hold and the areas they teach."
-        />
-        <HubTile
-          href="/academics/library"
-          image="/images/hero-library.jpg"
-          alt="A theological library."
-          title="Library"
-          body="The Digital Theological Library, reached through the student’s Populi account."
-          provenance="GENERATED"
-        />
-      </div>
-    </PageShell>
+    </PageWidth>
   );
 }
 
