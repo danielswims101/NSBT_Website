@@ -120,21 +120,7 @@ export function PublicPage({ path }: { path: string }) {
         </PageShell>
       );
     case "/about/founder":
-      return (
-        <PersonProfile
-          person={people.bernard}
-          ceremonial
-          kicker="About"
-          crumbs={[{ label: "About", href: "/about" }, { label: "Founding President" }]}
-          back={{ to: "/about", label: "About" }}
-        >
-          <p>
-            <Link to="/about/founder/message" className="text-ink underline-offset-4 hover:underline">
-              A message from the Founding President
-            </Link>
-          </p>
-        </PersonProfile>
-      );
+      return <FounderPage />;
     case "/about/founder/message":
       return (
         <PageShell path={path} related={[{ label: "Founding President", href: "/about/founder" }]}>
@@ -1188,6 +1174,107 @@ function CoursesPage() {
         ))}
       </div>
     </PageShell>
+  );
+}
+
+function FounderPage() {
+  const sections: { heading: string; image: string; alt: string; imageRight?: boolean; paras: string[] }[] = [
+    {
+      heading: "Christian Cultural Center",
+      image: "/images/org/founder-ccc.jpg",
+      alt: "The Christian Cultural Center, Brooklyn.",
+      paras: [
+        "Rev. Bernard is the founding pastor of the Christian Cultural Center in Brooklyn, one of the largest and fastest-growing churches in the United States, whose tens of thousands of members are drawn from every walk of life.",
+      ],
+    },
+    {
+      heading: "Education & Family",
+      image: "/images/org/founder-family.jpg",
+      alt: "Dr. Bernard and his wife Karen.",
+      imageRight: true,
+      paras: [
+        "Dr. Bernard holds a Master of Urban Studies and a Master of Divinity from Alliance Theological Seminary and has received honorary Doctor of Divinity degrees from Wagner College and from Nyack College / Alliance Theological Seminary.",
+        "He and his wife Karen have been married for more than four decades and have raised seven sons together, serving side by side in ministry.",
+      ],
+    },
+  ];
+  const outreach: { heading: string; image: string; alt: string; imageRight?: boolean; paras: string[] }[] = [
+    {
+      heading: "Outreach Programs",
+      image: "/images/org/founder-outreach.jpg",
+      alt: "Community outreach work.",
+      paras: [
+        "Rev. Bernard's initiatives extend well beyond the pulpit. Outreach under his leadership includes a food pantry serving the Brooklyn community, a prison ministry, and work with city organizations, including training for the New York City Police Department. He founded the Brooklyn Preparatory School and the Cultural Arts Academy Charter School.",
+      ],
+    },
+    {
+      heading: "His Reach",
+      image: "/images/org/founder-reach.jpg",
+      alt: "Dr. Bernard sharing his message.",
+      imageRight: true,
+      paras: [
+        "He embraces radio, television, and social media to share his message and bring Christ to the culture, reaching hundreds of thousands of people worldwide each week through his teaching.",
+      ],
+    },
+  ];
+  const accolades: [string, string, string?][] = [
+    ["2018", "NY's 50 Most Powerful People in Brooklyn", "City & State"],
+    ["2017", "Featured on Oprah's Super Soul Sunday", "Oprah Winfrey Network"],
+    ["2016", "The Power Pastor", "The New York Times"],
+    ["2016", "Founded the Christian Community Relations Council"],
+    ["2014", "Mayor Bill de Blasio's Transition Team", "The City of New York"],
+    ["2010 & 2011", "The Ebony Power 100", "Ebony Magazine"],
+    ["2008", "25 Leaders Reshaping New York", "Crain's Business Publication"],
+    ["2008 & 2007", "Most Influential Clergy", "New York Daily News"],
+    ["2008", "Most Influential African-American New Yorker", "New York Post"],
+    ["2007", "Top 30 Most Influential Black New Yorkers", "New York Post"],
+    ["2007", "Lifetime Achievement Award", "Consulate General of Israel in New York"],
+    ["2006", "One of the City's Most Influential New Yorkers", "New York Magazine"],
+    ["2001", "Mayor Michael Bloomberg's Transition Team", "The City of New York"],
+    ["2002 & 1990", "President (2002) & Board of Directors (1990)", "Christian Men's Network"],
+  ];
+  const Section = (s: (typeof sections)[number]) => (
+    <div key={s.heading} className="grid items-center gap-10 md:grid-cols-2">
+      <img
+        src={asset(s.image)}
+        alt={s.alt}
+        data-provenance="REAL"
+        className={`aspect-[4/3] w-full object-cover ${s.imageRight ? "md:order-2" : ""}`}
+      />
+      <div className={s.imageRight ? "md:order-1" : ""}>
+        <h2 className="font-sans text-[15px] font-semibold tracking-[0.14em] text-ink uppercase">{s.heading}</h2>
+        <div className="mt-4 space-y-4 text-[1.08rem] leading-[1.7] text-fg/85">
+          {s.paras.map((p) => (
+            <p key={p.slice(0, 40)}>{p}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+  return (
+    <PageWidth className="space-y-20 pt-10 sm:pt-14 md:pt-16">
+      {sections.map(Section)}
+      <div>
+        <h2 className="font-display text-[2.2rem] font-medium text-ink sm:text-[2.6rem]">Rev. Bernard&rsquo;s Accolades</h2>
+        <dl className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+          {accolades.map(([year, title, source]) => (
+            <div key={year + title}>
+              <dt className="font-sans text-[13px] font-medium tracking-[0.1em] text-seal">{year}</dt>
+              <dd className="mt-1 text-[1.02rem] leading-[1.4] text-ink">
+                {title}
+                {source ? <span className="mt-0.5 block text-[0.95rem] text-muted">{source}</span> : null}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      {outreach.map(Section)}
+      <p>
+        <Link to="/about/founder/message" className="arrow-link text-ink">
+          A message from the Founding President
+        </Link>
+      </p>
+    </PageWidth>
   );
 }
 
