@@ -237,6 +237,31 @@ export function PublicPage({ path }: { path: string }) {
           </p>
         </PageShell>
       );
+    case "/about/staff":
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Board of Trustees", href: "/about/trustees" },
+            { label: "Faculty", href: "/academics/faculty" },
+            { label: "Contact", href: "/contact" },
+          ]}
+        >
+          <p>The administrative staff of the New School of Biblical Theology.</p>
+          <dl className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+            {[
+              ["Lydia Bumgardner", "Registrar Emerita"],
+              ["Dr. Jacqueline Boswell", "Registrar"],
+              ["Dawn Bruce-Tagoe", "Bursar"],
+            ].map(([name, role]) => (
+              <div key={name} className="border-t border-rule pt-3">
+                <dt className="text-[1.15rem] text-ink">{name}</dt>
+                <dd className="mt-1 font-sans text-[13px] uppercase tracking-[0.14em] text-muted">{role}</dd>
+              </div>
+            ))}
+          </dl>
+        </PageShell>
+      );
     case "/about/effectiveness":
       return (
         <PageShell
@@ -559,10 +584,28 @@ export function PublicPage({ path }: { path: string }) {
         </PageShell>
       );
     case "/students/handbook":
-      return unpublished(path, handbookUnpublished, [
-        { label: "Current Students", href: "/students" },
-        { label: "Contact", href: "/contact" },
-      ]);
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Current Students", href: "/students" },
+            { label: "Registrar", href: "/students/records" },
+            { label: "Contact", href: "/contact" },
+          ]}
+        >
+          <p>
+            The New School of Biblical Theology Student Handbook is our formal agreement of the
+            responsibilities and services we provide, and it sets out the rights and roles of
+            students. We require all students to read, sign, and date the agreement before beginning
+            their studies, and we expect faculty, staff, and students to operate within its boundaries.
+          </p>
+          <p className="mt-5">
+            The Handbook may be amended prior to the beginning of each session. Students are notified
+            of any changes in policy and are bound by the new policies as they are posted. Student
+            Handbooks are provided once a student&rsquo;s application has been accepted.
+          </p>
+        </PageShell>
+      );
     case "/students/records":
       return (
         <PageShell
@@ -574,8 +617,14 @@ export function PublicPage({ path }: { path: string }) {
           ]}
         >
           <p>
-            The Director of Information Technology and Director of Student Records and Accounts is Randy Whittaker.{" "}
-            <MailLink className="underline-offset-4 hover:underline" />
+            The Office of the Registrar serves the registration and academic record-keeping needs of
+            the school. The office engages the seminary community through scheduling, registration,
+            advising, and fulfilling transcript requests, and students interact with it as they
+            progress through their program.
+          </p>
+          <p className="mt-5">
+            The Director of Information Technology and Director of Student Records and Accounts is
+            Randy Whittaker. <MailLink className="underline-offset-4 hover:underline" />
           </p>
         </PageShell>
       );
@@ -716,6 +765,24 @@ export function PublicPage({ path }: { path: string }) {
           related={[{ label: "Admissions", href: "/admissions" }, { label: "Current Students", href: "/students" }, { label: "Alumni", href: "/alumni" }]}
         >
           <p>{calendarCopy}</p>
+          <h2 className="pt-8 font-display text-2xl text-ink">Annual schedule</h2>
+          <p className="mt-4">
+            The academic year at NSBT consists of five sessions, each eight weeks in length. The
+            academic calendar begins each year on June 1. Sessions run for the following approximate
+            periods; students should check the website for the exact start and end dates each year.
+          </p>
+          <ul className="mt-6 max-w-[72ch] space-y-2">
+            <li><span className="font-medium text-ink">Session 1:</span> the first Monday of June through the first Sunday of August</li>
+            <li><span className="font-medium text-ink">Session 2:</span> the fifth Monday of August through the second Sunday of October</li>
+            <li><span className="font-medium text-ink">Session 3:</span> the fourth Monday of October through the third Sunday of December</li>
+            <li><span className="font-medium text-ink">Session 4:</span> the third Monday of January through the second Sunday of March</li>
+            <li><span className="font-medium text-ink">Session 5:</span> the fourth Monday of March through the fourth Sunday of May</li>
+          </ul>
+          <p className="mt-6">
+            Graduation exercises take place once a year at the Christian Cultural Center, with live
+            streaming online. Online orientation for newly enrolled candidates takes place during the
+            two weeks prior to the beginning of each session.
+          </p>
         </PageShell>
       );
     case "/contact":

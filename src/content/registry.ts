@@ -248,6 +248,16 @@ export const pages: Record<string, PageMeta> = {
     "description": "The New School of Biblical Theology, Inc. is a religious institution and is exempt from licensure by the Florida Commission for Independent Education.",
     "nextStep": null
   },
+  "/about/staff": {
+    "h1": "Staff Directory",
+    "breadcrumb": "Staff Directory",
+    "nav": "Staff Directory",
+    "footer": "Staff Directory",
+    "documentTitle": "Staff Directory · NSBT",
+    "metaTitle": "Staff Directory · NSBT",
+    "description": "The administrative staff of the New School of Biblical Theology.",
+    "nextStep": null
+  },
   "/about/effectiveness": {
     "h1": "Institutional Effectiveness",
     "breadcrumb": "Institutional Effectiveness",

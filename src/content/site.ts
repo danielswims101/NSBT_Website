@@ -50,6 +50,7 @@ export const primaryNav: NavItem[] = [
       { label: "Mission and Vision", href: "/about/mission" },
       { label: "Educational Effectiveness", href: "/about/effectiveness" },
       { label: "Ordination", href: "/admissions/ordination" },
+      { label: "Staff Directory", href: "/about/staff" },
       { label: "State Authorization", href: "/state-authorization" },
     ],
   },
