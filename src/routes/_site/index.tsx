@@ -32,12 +32,12 @@ const aboutLinks = [
 ];
 
 const academicsTiles = [
-  { label: "Academic Excellence", href: "/academics", img: "/images/org/tile-academic-excellence.jpg" },
+  { label: "Academic Excellence", href: "/academics/excellence", img: "/images/org/tile-academic-excellence.jpg" },
   { label: "Degrees Offered", href: "/programs", img: "/images/org/tile-degrees.jpg" },
   { label: "Faculty", href: "/academics/faculty", img: "/images/org/tile-faculty.jpg", note: "For Students Only" },
   { label: "Digital Theological Library", href: "/academics/library", img: "/images/org/tile-dtl.jpg" },
-  { label: "Sample Course", href: "/academics/courses", img: "/images/org/tile-sample-course.jpg" },
-  { label: "Online Learning", href: "/students/tech", img: "/images/org/tile-online-learning.jpg" },
+  { label: "Sample Course", href: "/academics/sample-course", img: "/images/org/tile-sample-course.jpg" },
+  { label: "Online Learning", href: "/academics/online-learning", img: "/images/org/tile-online-learning.jpg" },
 ];
 
 const admissionsLinks = [

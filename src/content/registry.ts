@@ -427,6 +427,36 @@ export const pages: Record<string, PageMeta> = {
       ]
     }
   },
+  "/academics/excellence": {
+    "h1": "Academic Excellence",
+    "breadcrumb": "Academic Excellence",
+    "nav": "Academic Excellence",
+    "footer": "Academic Excellence",
+    "documentTitle": "Academic Excellence · NSBT",
+    "metaTitle": "Academic Excellence · NSBT",
+    "description": "NSBT is committed to your success as a graduate student, teaching you not only the curriculum but how to become a lifelong learner.",
+    "nextStep": null
+  },
+  "/academics/sample-course": {
+    "h1": "View a Sample Course",
+    "breadcrumb": "Sample Course",
+    "nav": "Sample Course",
+    "footer": "Sample Course",
+    "documentTitle": "Sample Course · NSBT",
+    "metaTitle": "Sample Course · NSBT",
+    "description": "Take a nongraded visual tour of an NSBT online course in Populi and see what it is like to be a student at NSBT.",
+    "nextStep": null
+  },
+  "/academics/online-learning": {
+    "h1": "Online Learning",
+    "breadcrumb": "Online Learning",
+    "nav": "Online Learning",
+    "footer": "Online Learning",
+    "documentTitle": "Online Learning · NSBT",
+    "metaTitle": "Online Learning · NSBT",
+    "description": "The Online Learning Tutorial helps newly registered NSBT students learn and engage NSBT's online learning environment in Populi.",
+    "nextStep": null
+  },
   "/academics/catalog": {
     "h1": "Academic Catalog",
     "breadcrumb": "Academic Catalog",

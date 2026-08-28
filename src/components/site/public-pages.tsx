@@ -313,6 +313,92 @@ export function PublicPage({ path }: { path: string }) {
         { label: "Courses", href: "/academics/courses" },
         { label: "Contact", href: "/contact" },
       ]);
+    case "/academics/excellence":
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Digital Theological Library", href: "/academics/library" },
+            { label: "Courses", href: "/academics/courses" },
+            { label: "Online Learning", href: "/academics/online-learning" },
+          ]}
+        >
+          <p>The New School of Biblical Theology is committed to your success as a student.</p>
+          <p className="mt-5">
+            NSBT is a master&rsquo;s-level institution that offers its curricula online. At this level
+            it is essential that each student take responsibility for their own learning. NSBT wants
+            to help you not only learn the curriculum of your program but to become a lifelong learner.
+            As we like to say, we will not teach you everything you need to know &mdash; we will teach
+            you how to learn everything you need to know. Educational excellence is an open door into
+            the arena of learning for yourself, for those in your ministerial care, and for the One who
+            has called you to follow Him in ministry.
+          </p>
+          <h2 className="pt-8 font-display text-2xl text-ink">Pointers for academic success</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5">
+            <li>Explore study and research resources at the Digital Theological Library.</li>
+            <li>Use the academic and course calendars to plan ahead.</li>
+            <li>Contact your instructor about any questions regarding assignments.</li>
+            <li>Notify your professor immediately if you have trouble completing work on time.</li>
+          </ul>
+          <p className="mt-6 text-muted">Dr. Onorio Chaparro, Academic Dean and Director of Admissions</p>
+        </PageShell>
+      );
+    case "/academics/sample-course":
+      return (
+        <PageShell
+          path={path}
+          image="/images/org/sample-course.jpg"
+          alt="An NSBT graduate celebrating."
+          objectPosition="center 30%"
+          related={[
+            { label: "Online Learning", href: "/academics/online-learning" },
+            { label: "How to apply", href: "/admissions/apply" },
+          ]}
+        >
+          <p>
+            You should feel comfortable integrating school into your life. A sample course is a
+            nongraded way to take a visual tour of an NSBT online course and walk through a digital
+            classroom. Populi is our structured learning platform, with course lessons and discussions
+            on weekly deadlines.
+          </p>
+          <h2 className="pt-8 font-display text-2xl text-ink">What to expect in a sample course</h2>
+          <p className="mt-4">
+            In the sample course you will discover the online learning platform, encounter the
+            classroom, and view assignments &mdash; logging in and accessing courses just as an
+            enrolled student does.
+          </p>
+          <h2 className="pt-8 font-display text-2xl text-ink">Take the next step</h2>
+          <p className="mt-4">
+            Envision yourself equipped for what God has next for your future. Begin the journey by
+            contacting an enrollment advisor and starting the application process.
+          </p>
+        </PageShell>
+      );
+    case "/academics/online-learning":
+      return (
+        <PageShell
+          path={path}
+          image="/images/org/online-learning.jpg"
+          alt="A student learning online."
+          objectPosition="center 30%"
+          related={[
+            { label: "Technology requirements", href: "/students/tech" },
+            { label: "Sample Course", href: "/academics/sample-course" },
+          ]}
+        >
+          <p>
+            As a newly registered NSBT student, the Online Learning Tutorial is one of three tutorial
+            courses that will empower you to learn and engage NSBT&rsquo;s online learning environment.
+            Explore lessons, discussion boards, videos, and assignments within Populi&rsquo;s platform.
+          </p>
+          <p className="mt-5">
+            The training introduces you to a sample course that is simple to learn and easy to use.
+            Populi is the web-based software NSBT uses to keep academic records, among many other
+            things. Step-by-step guidance covers submitting work for assignments and participating in
+            lessons, discussions, and chat, with links to articles that go deeper into Populi basics.
+          </p>
+        </PageShell>
+      );
     case "/academics/policies":
       return unpublished(path, policiesUnpublished, [
         { label: "Academics", href: "/academics" },
