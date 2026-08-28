@@ -23,21 +23,10 @@ function crumbsFor(path: string) {
 }
 
 const HUB_ART: Record<string, { image: string; alt: string; objectPosition?: string; provenance?: "REAL" | "GENERATED" }> = {
-  "/academics": {
-    image: "/images/grad/grad-2023-banner.jpg",
-    alt: "An NSBT commencement procession at Christian Cultural Center, Brooklyn.",
-    objectPosition: "center 18%",
-  },
   "/programs": {
-    image: "/images/grad/grad-2025-class.jpg",
-    alt: "NSBT graduates at commencement, Christian Cultural Center, Brooklyn.",
-    objectPosition: "center 18%",
-  },
-  "/academics/library": {
-    image: "/images/hero-library.jpg",
-    alt: "A theological library.",
-    objectPosition: "center 40%",
-    provenance: "GENERATED",
+    image: "/images/org/degrees-offered.jpg",
+    alt: "An NSBT graduate receiving a diploma.",
+    objectPosition: "center 30%",
   },
 };
 
@@ -81,7 +70,7 @@ export function PageShell({
           src={asset(art.image)}
           alt={art.alt}
           data-provenance={art.provenance}
-          className="mt-10 aspect-[16/6] w-full object-cover"
+          className="mt-10 aspect-[16/9] max-h-[560px] w-full object-cover"
           style={art.objectPosition ? { objectPosition: art.objectPosition } : undefined}
         />
       ) : null}

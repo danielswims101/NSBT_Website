@@ -266,18 +266,24 @@ export function PublicPage({ path }: { path: string }) {
           ]}
         >
           <p>The administrative staff of the New School of Biblical Theology.</p>
-          <dl className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+          <div className="mt-10 grid gap-x-10 gap-y-12 sm:grid-cols-3">
             {[
-              ["Lydia Bumgardner", "Registrar Emerita"],
-              ["Dr. Jacqueline Boswell", "Registrar"],
-              ["Dawn Bruce-Tagoe", "Bursar"],
-            ].map(([name, role]) => (
-              <div key={name} className="border-t border-rule pt-3">
-                <dt className="text-[1.15rem] text-ink">{name}</dt>
-                <dd className="mt-1 font-sans text-[13px] uppercase tracking-[0.14em] text-muted">{role}</dd>
+              ["Lydia Bumgardner", "Registrar Emerita", "/images/org/staff-bumgardner.jpg"],
+              ["Dr. Jacqueline Boswell", "Registrar", "/images/org/staff-boswell.jpg"],
+              ["Dawn Bruce-Tagoe", "Bursar", "/images/org/staff-brucetagoe.jpg"],
+            ].map(([name, role, photo]) => (
+              <div key={name}>
+                <img
+                  src={asset(photo)}
+                  alt={name}
+                  data-provenance="REAL"
+                  className="aspect-[4/5] w-full object-cover object-top"
+                />
+                <h2 className="mt-4 font-sans text-[13px] font-semibold tracking-[0.1em] text-seal uppercase">{name}</h2>
+                <p className="mt-1 text-[1.02rem] text-ink">{role}</p>
               </div>
             ))}
-          </dl>
+          </div>
         </PageShell>
       );
     case "/about/effectiveness":
@@ -388,42 +394,66 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/academics/sample-course":
       return (
-        <PageShell
-          path={path}
-          image="/images/org/sample-course.jpg"
-          alt="An NSBT graduate celebrating."
-          objectPosition="center 30%"
-          related={[
-            { label: "Online Learning", href: "/academics/online-learning" },
-            { label: "How to apply", href: "/admissions/apply" },
-          ]}
-        >
-          <p>
-            You should feel comfortable integrating school into your life. A sample course is a
-            nongraded way to take a visual tour of an NSBT online course and walk through a digital
-            classroom. Populi is our structured learning platform, with course lessons and discussions
-            on weekly deadlines.
-          </p>
-          <h2 className="pt-8 font-display text-2xl text-ink">What to expect in a sample course</h2>
-          <p className="mt-4">
-            In the sample course you will discover the online learning platform, encounter the
-            classroom, and view assignments &mdash; logging in and accessing courses just as an
-            enrolled student does.
-          </p>
-          <h2 className="pt-8 font-display text-2xl text-ink">Take the next step</h2>
-          <p className="mt-4">
-            Envision yourself equipped for what God has next for your future. Begin the journey by
-            contacting an enrollment advisor and starting the application process.
-          </p>
-        </PageShell>
+        <PageWidth className="space-y-16 pt-10 sm:pt-14 md:pt-16">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <h1 className="font-display text-[2.2rem] font-medium text-ink sm:text-[2.7rem]">View a Sample Course</h1>
+              <p className="mt-6 text-[1.08rem] leading-[1.7] text-fg/85">
+                You should feel comfortable integrating school into your life. View a sample course
+                through two video tutorials to get a glimpse of the flexibility of online learning and
+                experience what it is like to be a student at the New School of Biblical Theology.
+              </p>
+            </div>
+            <img
+              src={asset("/images/org/sample-imac.jpg")}
+              alt="A student working through an NSBT online course."
+              data-provenance="REAL"
+              className="aspect-[4/3] w-full object-cover md:order-last"
+            />
+          </div>
+          <div className="text-center">
+            <h2 className="font-sans text-[15px] font-semibold tracking-[0.14em] text-seal uppercase">
+              What to expect in a sample course
+            </h2>
+            <p className="mx-auto mt-4 max-w-3xl text-[1.06rem] leading-[1.7] text-fg/85">
+              It is a nongraded way to take a visual tour of an NSBT online course and go through a
+              digital classroom. Populi is our structured learning format, which includes course
+              lessons and discussions with weekly deadlines. In the sample course you will discover the
+              online learning platform, encounter the classroom, and view assignments.
+            </p>
+          </div>
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="font-display text-[2rem] font-medium text-ink sm:text-[2.4rem]">Take the next step</h2>
+              <p className="mt-6 text-[1.08rem] leading-[1.7] text-fg/85">
+                Envision yourself in cap and gown, equipped for what God has next for your future.
+                Begin the journey today by contacting an enrollment advisor and starting the
+                application process.
+              </p>
+              <p className="mt-8">
+                <Link
+                  to="/admissions/apply"
+                  className="inline-flex items-center bg-gold px-8 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-ink transition-colors hover:bg-gold-soft"
+                >
+                  Apply Now
+                </Link>
+              </p>
+            </div>
+            <img
+              src={asset("/images/org/sample-course.jpg")}
+              alt="An NSBT graduate in cap and gown."
+              data-provenance="REAL"
+              className="aspect-[4/3] w-full object-cover md:order-last"
+            />
+          </div>
+        </PageWidth>
       );
     case "/academics/online-learning":
       return (
         <PageShell
           path={path}
-          image="/images/org/online-learning.jpg"
-          alt="A student learning online."
-          objectPosition="center 30%"
+          image="/images/org/online-learning-screen.jpg"
+          alt="The NSBT online learning environment in Populi."
           related={[
             { label: "Technology requirements", href: "/students/tech" },
             { label: "Sample Course", href: "/academics/sample-course" },
@@ -485,9 +515,6 @@ export function PublicPage({ path }: { path: string }) {
       return (
         <PageShell
           path={path}
-          image="/images/grad/grad-2023-smiles.jpg"
-          alt="NSBT graduates at commencement, Christian Cultural Center, Brooklyn."
-          objectPosition="center 18%"
           heroChildren={
             <Button asChild size="lg" className="h-12 w-full sm:w-auto">
               <a href={POPULI_APPLY}>Start an application</a>
@@ -614,7 +641,7 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/students/tech":
       return (
-        <PageShell path={path} related={[{ label: "Current Students", href: "/students" }]}>
+        <PageShell path={path} image="/images/org/online-learning.jpg" alt="A student working online." objectPosition="center 30%" related={[{ label: "Current Students", href: "/students" }]}>
           <p>{techCopy}</p>
         </PageShell>
       );
