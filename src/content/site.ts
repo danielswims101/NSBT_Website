@@ -78,6 +78,7 @@ export const primaryNav: NavItem[] = [
       { label: "Admissions Process", href: "/admissions/apply" },
       { label: "Request Information", href: "/admissions/request" },
       { label: "Tuition & Fees", href: "/tuition" },
+      { label: "Registration Information", href: "/admissions/registration" },
       { label: "Transfer Credit", href: "/admissions/transfer" },
     ],
   },
@@ -91,6 +92,7 @@ export const primaryNav: NavItem[] = [
       { label: "Student Accessibility", href: "/students/accessibility" },
       { label: "Registrar", href: "/students/records" },
       { label: "Online Chapel/Worship", href: "/students/chapel" },
+      { label: "Online Prayers", href: "/students/prayers" },
       { label: "Alumni", href: "/alumni" },
     ],
   },
@@ -100,6 +102,7 @@ export const primaryNav: NavItem[] = [
 /** Secondary (upper) navigation row, following nsbt.org. */
 export const secondaryNav: NavChild[] = [
   { label: "Contact Us", href: "/contact" },
+  { label: "A Conversation Series", href: "/conversation" },
   { label: "Events Calendar", href: "/events" },
 ];
 

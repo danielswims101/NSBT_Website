@@ -586,10 +586,114 @@ export function PublicPage({ path }: { path: string }) {
         </PageShell>
       );
     case "/students/chapel":
-      return unpublished(path, chapelUnpublished, [
-        { label: "Current Students", href: "/students" },
-        { label: "Calendar", href: "/events" },
-      ]);
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Current Students", href: "/students" },
+            { label: "Online Prayers", href: "/students/prayers" },
+            { label: "Calendar", href: "/events" },
+          ]}
+        >
+          <p>
+            Living in Christian community, even an online one, is a witness to God&rsquo;s nature of
+            love, mercy, and grace. Worship is something done together &mdash; not merely digitally or
+            physically, but together in one spirit. Although NSBT is a diverse student body of Christ
+            followers, the Holy Spirit leads us to converge in worship and to express our beautiful,
+            multicolored Christian community.
+          </p>
+          <p className="mt-5">
+            Our online chapel and worship opportunities nurture our relationship with God and one
+            another. Students, faculty, and staff can check the Online Chapel/Worship bulletin board
+            for upcoming chapels and worship opportunities; you will need your NSBT username and
+            password to view the announcements.
+          </p>
+        </PageShell>
+      );
+    case "/students/prayers":
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Online Chapel/Worship", href: "/students/chapel" },
+            { label: "Current Students", href: "/students" },
+          ]}
+        >
+          <p>
+            God&rsquo;s love and compassion are unconditional, and they are for you. As a community of
+            faith &mdash; students, faculty, and staff &mdash; we at NSBT are committed to pray
+            together each week for our school and our family.
+          </p>
+          <p className="mt-5">
+            If you would like prayer, or would like to pray for others, you are welcome to submit a
+            prayer request and to join in prayer for the requests of others. You will need your NSBT
+            username and password to leave a prayer request or to pray for others.
+          </p>
+        </PageShell>
+      );
+    case "/admissions/registration":
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Admissions", href: "/admissions" },
+            { label: "How to apply", href: "/admissions/apply" },
+            { label: "Transfer Credit", href: "/admissions/transfer" },
+          ]}
+        >
+          <h2 className="font-display text-2xl text-ink">Institutional language of instruction</h2>
+          <p className="mt-4">
+            The official language of instruction at the New School of Biblical Theology is English.
+            All courses, instructional materials, assignments, assessments, and institutional
+            communications are delivered in English. Students must possess sufficient English language
+            proficiency to read academic materials, participate in course discussions, complete
+            written assignments, and meet program learning outcomes.
+          </p>
+          <h2 className="pt-8 font-display text-2xl text-ink">
+            Foreign-language transcript and credential-evaluation policy
+          </h2>
+          <p className="mt-4">
+            Applicants submitting academic transcripts issued in a language other than English must
+            provide both the original official transcript and a certified English translation.
+            Translations must accurately reflect the original document and be prepared by a qualified
+            translation service.
+          </p>
+          <p className="mt-4">
+            International transcripts must also be evaluated by a recognized third-party credential
+            evaluation agency to determine equivalency to United States educational standards, such as
+            World Education Services (WES).
+          </p>
+        </PageShell>
+      );
+    case "/conversation":
+      return (
+        <PageShell
+          path={path}
+          related={[
+            { label: "Events Calendar", href: "/events" },
+            { label: "Faculty", href: "/academics/faculty" },
+          ]}
+        >
+          <p>
+            NSBT&rsquo;s Conversation Series brings scholars and leaders together for engaging
+            conversations on faith, Scripture, and public life.
+          </p>
+          <h2 className="pt-8 font-display text-2xl text-ink">
+            A Conversation with Dr. Lisa Bowens
+          </h2>
+          <p className="mt-4">
+            Dr. Lisa Marie Bowens is Associate Professor of New Testament at Princeton Theological
+            Seminary and the first African American woman to earn tenure in its Bible department. She
+            holds degrees from the University of North Carolina at Greensboro, Duke Divinity School,
+            and Princeton Theological Seminary. A New Testament scholar and award-winning author, she
+            is featured in NSBT&rsquo;s Hermeneutics course.
+          </p>
+          <p className="mt-4">
+            Join us for an engaging conversation as she presents &ldquo;Glimpses of Faith and Hope:
+            Engaging African American Biblical Interpretations.&rdquo;
+          </p>
+        </PageShell>
+      );
     case "/students/career":
       return unpublished(path, careerUnpublished, [
         { label: "Current Students", href: "/students" },

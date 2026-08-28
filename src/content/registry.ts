@@ -750,6 +750,36 @@ export const pages: Record<string, PageMeta> = {
       ]
     }
   },
+  "/students/prayers": {
+    "h1": "Online Prayers",
+    "breadcrumb": "Online Prayers",
+    "nav": "Current Students",
+    "footer": "Online Prayers",
+    "documentTitle": "Online Prayers · NSBT",
+    "metaTitle": "Online Prayers · NSBT",
+    "description": "As a community of faith, NSBT students, faculty, and staff pray together each week for the school and one another.",
+    "nextStep": null
+  },
+  "/admissions/registration": {
+    "h1": "Registration Information",
+    "breadcrumb": "Registration Information",
+    "nav": "Admissions",
+    "footer": "Registration Information",
+    "documentTitle": "Registration Information · NSBT",
+    "metaTitle": "Registration Information · NSBT",
+    "description": "Institutional language of instruction and the foreign-language transcript and credential-evaluation policy for admission to NSBT.",
+    "nextStep": null
+  },
+  "/conversation": {
+    "h1": "A Conversation Series",
+    "breadcrumb": "A Conversation Series",
+    "nav": "A Conversation Series",
+    "footer": "A Conversation Series",
+    "documentTitle": "A Conversation Series · NSBT",
+    "metaTitle": "A Conversation Series · NSBT",
+    "description": "NSBT's Conversation Series brings scholars and leaders together for engaging conversations on faith, Scripture, and public life.",
+    "nextStep": null
+  },
   "/students/career": {
     "h1": "Career Services",
     "breadcrumb": "Career Services",
