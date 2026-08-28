@@ -64,39 +64,31 @@ export function PageShell({
   provenance?: "REAL" | "GENERATED";
 }) {
   const meta = pageMeta(path);
-  const art = image
-    ? { image, alt: alt ?? "", objectPosition, provenance }
-    : HUB_ART[path];
+  // nsbt.org has no hero band on interior pages: content flows under the header
+  // with a centered page title on white. (image/kicker/heroChildren kept in the
+  // signature for callers; the title + optional intro lead the page.)
   return (
-    <>
-      <PageHero
-        kicker={kicker}
-        title={meta.h1}
-        lede={lede}
-        image={art?.image}
-        alt={art?.alt}
-        compact
-        objectPosition={art?.objectPosition}
-        provenance={art?.provenance}
-      >
-        {heroChildren}
-      </PageHero>
-      <PageWidth className="pt-8 sm:pt-10 md:pt-14">
-        <TranslationNotice />
-        <Breadcrumb items={crumbsFor(path)} />
-        {related ? (
-          <div className="mt-10 grid items-start gap-14 lg:grid-cols-12">
-            <div className="space-y-6 text-[1.125rem] leading-[1.72] lg:col-span-8">{children}</div>
-            <aside className="lg:col-span-4 lg:sticky lg:top-28">
-              <SectionRail items={related} />
-            </aside>
-          </div>
-        ) : (
-          <div className="mt-10">{children}</div>
-        )}
-        <NextStep path={path} />
-      </PageWidth>
-    </>
+    <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+      <TranslationNotice />
+      <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">{meta.h1}</h1>
+      {lede ? (
+        <p className="mx-auto mt-5 max-w-2xl text-center text-[1.15rem] leading-[1.6] text-fg/85">{lede}</p>
+      ) : null}
+      {heroChildren ? (
+        <div className="mt-8 flex flex-wrap justify-center gap-3">{heroChildren}</div>
+      ) : null}
+      {related ? (
+        <div className="mt-14 grid items-start gap-14 lg:grid-cols-12">
+          <div className="space-y-6 text-[1.125rem] leading-[1.72] lg:col-span-8">{children}</div>
+          <aside className="lg:col-span-4 lg:sticky lg:top-28">
+            <SectionRail items={related} />
+          </aside>
+        </div>
+      ) : (
+        <div className="mx-auto mt-14 max-w-3xl space-y-6 text-[1.125rem] leading-[1.72]">{children}</div>
+      )}
+      <NextStep path={path} />
+    </PageWidth>
   );
 }
 
