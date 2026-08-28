@@ -88,11 +88,12 @@ function Tile({ img, label, href, note }: { img: string; label: string; href: st
       </Link>
       <h3 className="mt-5 font-display text-[1.55rem] font-medium text-ink">{label}</h3>
       {note ? (
-        <p className="mt-1 font-sans text-[11px] uppercase tracking-[0.18em] text-muted">{note}</p>
-      ) : null}
-      <p className="mt-4">
-        <GoldButton to={href}>Learn More</GoldButton>
-      </p>
+        <p className="mt-2 font-sans text-[11px] uppercase tracking-[0.18em] text-muted">{note}</p>
+      ) : (
+        <p className="mt-4">
+          <GoldButton to={href}>Learn More</GoldButton>
+        </p>
+      )}
     </div>
   );
 }
