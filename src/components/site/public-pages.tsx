@@ -450,21 +450,36 @@ export function PublicPage({ path }: { path: string }) {
       ]);
     case "/admissions":
       return (
-        <PageShell
-          path={path}
-          related={[
-            { label: "How to apply", href: "/admissions/apply" },
-            { label: "Tuition & Fees", href: "/tuition" },
-            { label: "Transfer Credit", href: "/admissions/transfer" },
-            { label: "Accreditation Status", href: "/about/accreditation" },
-          ]}
-        >
-          <p>{rollingAdmissions}</p>
-          <p className="mt-5">{bachelorRequired}</p>
-          <h2 className="pt-8 font-display text-2xl text-ink">Where students may enroll</h2>
-          <p className="mt-4">{enrollmentLimit}</p>
-          <p className="mt-4">{enrollmentExpansion}</p>
-        </PageShell>
+        <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+          <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">Admissions</h1>
+          <div className="mx-auto mt-12 grid max-w-5xl gap-x-14 gap-y-6 text-[1.08rem] leading-[1.7] text-fg/90 md:grid-cols-2">
+            <p>{mission}</p>
+            <p>{bachelorRequired}</p>
+          </div>
+          <div className="mx-auto mt-14 max-w-5xl">
+            <h2 className="font-sans text-[15px] font-semibold tracking-[0.14em] text-ink uppercase">
+              Administrative Processing
+            </h2>
+            <p className="mt-4 text-[1.06rem] leading-[1.7] text-fg/90">{enrollmentLimit}</p>
+            <p className="mt-4 text-[1.06rem] leading-[1.7] text-fg/90">{enrollmentExpansion}</p>
+          </div>
+          <ul className="mx-auto mt-10 flex max-w-5xl flex-col items-start gap-2 text-[1.1rem] text-ink">
+            {[
+              ["Admissions Process", "/admissions/apply"],
+              ["Apply Now", "/admissions/apply"],
+              ["Request Information", "/admissions/request"],
+              ["Tuition & Fees", "/tuition"],
+              ["Sample Course", "/academics/courses"],
+            ].map(([label, href]) => (
+              <li key={label} className="flex gap-3">
+                <span aria-hidden className="text-seal">&bull;</span>
+                <Link to={href} className="underline-offset-4 hover:text-seal hover:underline">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </PageWidth>
       );
     case "/admissions/apply":
       return (
@@ -568,32 +583,34 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/students":
       return (
-        <PageShell
-          path={path}
-          related={[
-            { label: "Log in", href: "/login" },
-            { label: "Library", href: "/academics/library" },
-            { label: "Office of Student Records and Accounts", href: "/students/records" },
-            { label: "Student Accessibility", href: "/students/accessibility" },
-            { label: "Technology", href: "/students/tech" },
-          ]}
-        >
-          <p>{studentSupport}</p>
-          <p className="mt-6">
-            Sign in to Populi, the Digital Theological Library, and Google Workspace from{" "}
-            <Link to="/login" className="underline-offset-4 hover:underline">
-              Log in
-            </Link>
-            .
-          </p>
-          <p className="mt-6">
-            <Link to="/academics/courses" className="underline-offset-4 hover:underline">
-              Courses
-            </Link>
-          </p>
-          <h2 className="pt-8 font-display text-2xl text-ink">Questions</h2>
-          <QaBlock items={studentFaq} />
-        </PageShell>
+        <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+          <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">Current Students</h1>
+          <div className="mx-auto mt-12 max-w-3xl space-y-6 text-[1.06rem] leading-[1.7] text-fg/90">
+            <p>
+              Once you have been notified of your acceptance and have informed the Registrar of your
+              intention to enroll, the Registration Department contacts you with instructions for
+              accessing the NSBT online learning system and reaching your Academic Advisor.
+              Introductory tutorials guide you through the basics of the system.
+            </p>
+            <p>
+              You register for all classes you intend to take each academic Session in order to be
+              enrolled, and you may register for subsequent Sessions up to one year in advance.
+              Registration opens online two weeks before each Session and continues through the second
+              week of the Session; changes are made with the Registrar using the Add/Drop and Withdraw
+              forms.
+            </p>
+            <p>
+              The Master of Arts degree requires a minimum of two years to complete and must be
+              finished within five years of initial enrollment, unless a student formally applies for
+              a Leave of Absence. Sign in to Populi, the Digital Theological Library, and Google
+              Workspace from{" "}
+              <Link to="/login" className="underline-offset-4 hover:text-seal hover:underline">
+                Log in
+              </Link>
+              .
+            </p>
+          </div>
+        </PageWidth>
       );
     case "/students/tech":
       return (
