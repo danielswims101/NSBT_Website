@@ -76,12 +76,10 @@ function GoldButton({ to, children }: { to: string; children: string }) {
   );
 }
 
-function Tile({ img, label, href, note, index }: { img: string; label: string; href: string; note?: string; index: number }) {
-  // nsbt.org lays these out two per row with the images on the outer edges,
-  // so the right-hand tile mirrors the left (image right, text left).
-  const imageRight = index % 2 === 1;
+function Tile({ img, label, href, note }: { img: string; label: string; href: string; note?: string }) {
+  // nsbt.org: two per row, each an image on the left with the title/button to its right.
   return (
-    <div className={`flex items-center gap-6 ${imageRight ? "flex-row-reverse" : ""}`}>
+    <div className="flex items-center gap-6">
       <Link to={href} className="group block w-1/2 shrink-0 overflow-hidden">
         <img
           src={asset(img)}
@@ -185,8 +183,8 @@ function Home() {
             </p>
           </div>
           <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
-            {academicsTiles.map((t, i) => (
-              <Tile key={t.label} index={i} {...t} />
+            {academicsTiles.map((t) => (
+              <Tile key={t.label} {...t} />
             ))}
           </div>
         </PageWidth>
@@ -241,8 +239,8 @@ function Home() {
             </p>
           </div>
           <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
-            {currentStudentsTiles.map((t, i) => (
-              <Tile key={t.label} index={i} {...t} />
+            {currentStudentsTiles.map((t) => (
+              <Tile key={t.label} {...t} />
             ))}
           </div>
         </PageWidth>

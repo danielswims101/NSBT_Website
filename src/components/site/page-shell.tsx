@@ -1,5 +1,6 @@
 import { Link } from "@/components/site/link";
 import type { ReactNode } from "react";
+import { asset } from "@/lib/asset";
 import { pageMeta } from "@/content/registry";
 import { Breadcrumb, PageHero, PageWidth, SectionRail } from "./page-hero";
 import { NextStep } from "./next-step";
@@ -64,15 +65,25 @@ export function PageShell({
   provenance?: "REAL" | "GENERATED";
 }) {
   const meta = pageMeta(path);
-  // nsbt.org has no hero band on interior pages: content flows under the header
-  // with a centered page title on white. (image/kicker/heroChildren kept in the
-  // signature for callers; the title + optional intro lead the page.)
+  const art = image ? { image, alt: alt ?? "", objectPosition, provenance } : HUB_ART[path];
+  // nsbt.org has no navy hero band on interior pages: content flows under the
+  // header with a centered title on white, and any page image sits as a clean
+  // banner below the title.
   return (
     <PageWidth className="pt-10 sm:pt-14 md:pt-20">
       <TranslationNotice />
       <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">{meta.h1}</h1>
       {lede ? (
         <p className="mx-auto mt-5 max-w-2xl text-center text-[1.15rem] leading-[1.6] text-fg/85">{lede}</p>
+      ) : null}
+      {art?.image ? (
+        <img
+          src={asset(art.image)}
+          alt={art.alt}
+          data-provenance={art.provenance}
+          className="mt-10 aspect-[16/6] w-full object-cover"
+          style={art.objectPosition ? { objectPosition: art.objectPosition } : undefined}
+        />
       ) : null}
       {heroChildren ? (
         <div className="mt-8 flex flex-wrap justify-center gap-3">{heroChildren}</div>
