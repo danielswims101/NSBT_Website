@@ -1353,12 +1353,12 @@ function FacultyPage() {
             <span className="uppercase tracking-[0.08em] text-seal">{p.name}</span>
           );
           return (
-            <article key={p.name} className="flex gap-5">
+            <article key={p.name} className="flex gap-6">
               <img
                 src={asset(p.photo)}
                 alt={p.name}
                 data-provenance="REAL"
-                className="h-32 w-32 shrink-0 object-cover"
+                className="aspect-[4/5] w-40 shrink-0 object-cover object-top sm:w-44"
               />
               <div className="pt-1">
                 <h2 className="font-sans text-[15px] font-medium">{nameEl}</h2>
