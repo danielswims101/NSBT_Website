@@ -1454,88 +1454,85 @@ function ProductPage({ handle }: { handle: string }) {
 }
 
 function ContactPage() {
+  const field = "mt-2 h-12 w-full border border-rule bg-paper px-3 text-fg";
   return (
-    <PageShell
-      path="/contact"
-      image="/images/from/orlando.jpg"
-      alt="Orlando, Florida."
-      lede={orlandoNote}
-      related={[
-        { label: "How to apply", href: "/admissions/apply" },
-        { label: "Ask NSBT", href: "/ask" },
-        { label: "Current Students", href: "/students" },
-        { label: "Give", href: "/give" },
-      ]}
-    >
-      <h2 className="section-title text-[1.85rem] text-ink">If you are writing about</h2>
-      <ul className="mt-6 divide-y divide-rule border-y border-rule">
-        <li>
-          <Link to="/admissions/apply" className="flex min-h-14 items-center justify-between gap-4 py-3">
-            <span>
-              <span className="block font-medium text-ink">Admission</span>
-              <span className="mt-1 block text-[15px] text-muted">{rollingAdmissions}</span>
-            </span>
-            <span className="text-seal" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/ask" className="flex min-h-14 items-center justify-between gap-4 py-3">
-            <span>
-              <span className="block font-medium text-ink">A question these pages already answer</span>
-              <span className="mt-1 block text-[15px] text-muted">{askLede}</span>
-            </span>
-            <span className="text-seal" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/students" className="flex min-h-14 items-center justify-between gap-4 py-3">
-            <span>
-              <span className="block font-medium text-ink">Current study</span>
-              <span className="mt-1 block text-[15px] text-muted">Library, records, accessibility, and technology.</span>
-            </span>
-            <span className="text-seal" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/give" className="flex min-h-14 items-center justify-between gap-4 py-3">
-            <span>
-              <span className="block font-medium text-ink">A gift</span>
-              <span className="mt-1 block text-[15px] text-muted">{giveCopy.split(".")[0]}.</span>
-            </span>
-            <span className="text-seal" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        </li>
-      </ul>
-      <h2 className="section-title mt-12 text-[1.85rem] text-ink">The office</h2>
-      <address className="mt-6 max-w-xl border-l-2 border-seal py-2 pl-6 text-[17px] leading-[1.7] not-italic sm:pl-8">
-        <p>Office of Student Records and Accounts</p>
-        <p className="mt-3">{school.address}</p>
-        <p className="mt-3">
-          Toll Free:{" "}
-          <a className="underline-offset-4 hover:underline" href={school.phoneHref}>
-            {school.phone}
-          </a>
-        </p>
-        <p>
-          Local:{" "}
-          <a className="underline-offset-4 hover:underline" href={school.localPhoneHref}>
-            {school.localPhone}
-          </a>
-        </p>
-        <p>Fax: {school.fax}</p>
-        <p className="mt-3">
-          <MailLink className="underline-offset-4 hover:underline" />
-        </p>
-      </address>
-    </PageShell>
+    <PageWidth className="pt-10 sm:pt-14 md:pt-20">
+      <h1 className="text-center font-display text-[2.6rem] font-medium text-ink sm:text-[3.3rem]">Contact Us</h1>
+      <p className="mx-auto mt-8 max-w-2xl text-center text-[1.08rem] leading-[1.7] text-fg/90">
+        Interested in learning more about the New School of Biblical Theology, or have a question?
+        Send us a note with the form below and it will reach our staff.
+      </p>
+      <div className="mx-auto mt-10 max-w-3xl border-y border-rule py-6">
+        <p className="font-sans text-[12px] font-semibold tracking-[0.14em] text-ink uppercase">Please note</p>
+        <ul className="mt-3 space-y-2 text-[1.02rem] leading-[1.7] text-fg/85">
+          <li>
+            For application forms, go to{" "}
+            <Link to="/admissions/apply" className="text-ink underline-offset-4 hover:text-seal hover:underline">
+              Admissions &rsaquo; Apply Now
+            </Link>
+            .
+          </li>
+          <li>
+            For a transcript form, go to{" "}
+            <Link to="/students/records" className="text-ink underline-offset-4 hover:text-seal hover:underline">
+              Current Students &rsaquo; Registrar
+            </Link>
+            .
+          </li>
+          <li>
+            To request information, go to{" "}
+            <Link to="/admissions/request" className="text-ink underline-offset-4 hover:text-seal hover:underline">
+              Request Information
+            </Link>
+            .
+          </li>
+        </ul>
+      </div>
+      <div className="mx-auto mt-12 grid max-w-4xl gap-x-14 gap-y-10 md:grid-cols-2">
+        <address className="text-[1.02rem] leading-[1.8] text-fg/90 not-italic">
+          <p className="font-medium text-ink">Office of Student Records and Accounts</p>
+          <p className="mt-2">{school.address}</p>
+          <p className="mt-3">
+            Toll Free:{" "}
+            <a className="underline-offset-4 hover:underline" href={school.phoneHref}>{school.phone}</a>
+          </p>
+          <p>
+            Local:{" "}
+            <a className="underline-offset-4 hover:underline" href={school.localPhoneHref}>{school.localPhone}</a>
+          </p>
+          <p>Fax: {school.fax}</p>
+          <p className="mt-3">
+            <MailLink className="underline-offset-4 hover:underline" />
+          </p>
+        </address>
+        <form action={`mailto:${STUDENT_EMAIL}`} method="post" encType="text/plain">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <label className="block">
+              <span className="font-sans text-[12px] tracking-[0.14em] text-muted uppercase">First Name</span>
+              <input name="First Name" type="text" className={field} />
+            </label>
+            <label className="block">
+              <span className="font-sans text-[12px] tracking-[0.14em] text-muted uppercase">Last Name</span>
+              <input name="Last Name" type="text" className={field} />
+            </label>
+          </div>
+          <label className="mt-4 block">
+            <span className="font-sans text-[12px] tracking-[0.14em] text-muted uppercase">Email</span>
+            <input name="Email" type="email" className={field} />
+          </label>
+          <label className="mt-4 block">
+            <span className="font-sans text-[12px] tracking-[0.14em] text-muted uppercase">Message</span>
+            <textarea name="Message" rows={5} className="mt-2 w-full border border-rule bg-paper px-3 py-2 text-fg" />
+          </label>
+          <button
+            type="submit"
+            className="mt-5 inline-flex items-center bg-gold px-10 py-3 font-sans text-[12.5px] tracking-[0.2em] text-ink uppercase transition-colors hover:bg-gold-soft"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </PageWidth>
   );
 }
 

@@ -867,7 +867,7 @@ export const pages: Record<string, PageMeta> = {
     }
   },
   "/contact": {
-    "h1": "Contact",
+    "h1": "Contact Us",
     "breadcrumb": "Contact",
     "nav": "",
     "footer": "Contact",
@@ -981,7 +981,7 @@ export const pages: Record<string, PageMeta> = {
     }
   },
   "/give": {
-    "h1": "Give",
+    "h1": "Donate",
     "breadcrumb": "Give",
     "nav": "",
     "footer": "Give",
