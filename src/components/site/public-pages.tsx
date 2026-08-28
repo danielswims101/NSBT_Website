@@ -791,7 +791,27 @@ function AlumniPage() {
             />
           </aside>
         </div>
-        <h2 className="section-title mt-16 text-ink">Commencement and the Alumni Association</h2>
+        <h2 className="section-title mt-16 text-ink">Alumni Association</h2>
+        <p className="mt-4 max-w-[72ch] text-[1.05rem] leading-[1.65] text-fg/85">
+          The purpose of the New School of Biblical Theology Alumni Association is to provide
+          opportunities for fellowship, networking, and personal and professional development among
+          its members, and to support and promote NSBT, helping to advance its mission and vision and
+          to contribute to cultural engagement and public theology for the common good.
+        </p>
+        <dl className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+          {[
+            ["President", "Timothy Howard"],
+            ["Vice President", "Consuelo Senior"],
+            ["Secretary", "Dr. Jacqueline Boswell"],
+            ["Faculty Advisor", "Dr. Angela White"],
+          ].map(([role, name]) => (
+            <div key={role} className="border-t border-rule pt-3">
+              <dt className="font-sans text-[11px] uppercase tracking-[0.16em] text-muted">{role}</dt>
+              <dd className="mt-1 text-[1.05rem] text-ink">{name}</dd>
+            </div>
+          ))}
+        </dl>
+        <h2 className="section-title mt-16 text-ink">Commencement and the photo gallery</h2>
         <p className="mt-3 max-w-[66ch] text-[1.05rem] leading-[1.65] text-muted">
           NSBT holds commencement in the sanctuary of Christian Cultural Center, Brooklyn.
         </p>
