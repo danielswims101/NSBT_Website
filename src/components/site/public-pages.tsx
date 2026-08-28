@@ -665,7 +665,7 @@ export function PublicPage({ path }: { path: string }) {
       );
     case "/students/accessibility":
       return (
-        <PageShell path={path} related={[{ label: "Current Students", href: "/students" }, { label: "Contact", href: "/contact" }]}>
+        <PageShell path={path} image="/images/org/accessibility.jpg" alt="NSBT students working together." objectPosition="center 40%" related={[{ label: "Current Students", href: "/students" }, { label: "Contact", href: "/contact" }]}>
           <p className="whitespace-pre-line">{accessibilityCopy}</p>
         </PageShell>
       );
@@ -673,6 +673,8 @@ export function PublicPage({ path }: { path: string }) {
       return (
         <PageShell
           path={path}
+          image="/images/org/chapel.png"
+          alt="Online chapel and worship at NSBT."
           related={[
             { label: "Current Students", href: "/students" },
             { label: "Online Prayers", href: "/students/prayers" },
@@ -698,6 +700,8 @@ export function PublicPage({ path }: { path: string }) {
       return (
         <PageShell
           path={path}
+          image="/images/org/prayers.png"
+          alt="A community of prayer at NSBT."
           related={[
             { label: "Online Chapel/Worship", href: "/students/chapel" },
             { label: "Current Students", href: "/students" },
@@ -719,6 +723,9 @@ export function PublicPage({ path }: { path: string }) {
       return (
         <PageShell
           path={path}
+          image="/images/org/registration.jpg"
+          alt="Preparing to study at NSBT."
+          objectPosition="center 40%"
           related={[
             { label: "Admissions", href: "/admissions" },
             { label: "How to apply", href: "/admissions/apply" },
@@ -762,20 +769,28 @@ export function PublicPage({ path }: { path: string }) {
             NSBT&rsquo;s Conversation Series brings scholars and leaders together for engaging
             conversations on faith, Scripture, and public life.
           </p>
-          <h2 className="pt-8 font-display text-2xl text-ink">
-            A Conversation with Dr. Lisa Bowens
-          </h2>
-          <p className="mt-4">
-            Dr. Lisa Marie Bowens is Associate Professor of New Testament at Princeton Theological
-            Seminary and the first African American woman to earn tenure in its Bible department. She
-            holds degrees from the University of North Carolina at Greensboro, Duke Divinity School,
-            and Princeton Theological Seminary. A New Testament scholar and award-winning author, she
-            is featured in NSBT&rsquo;s Hermeneutics course.
-          </p>
-          <p className="mt-4">
-            Join us for an engaging conversation as she presents &ldquo;Glimpses of Faith and Hope:
-            Engaging African American Biblical Interpretations.&rdquo;
-          </p>
+          <h2 className="pt-8 font-display text-2xl text-ink">A Conversation with Dr. Lisa Bowens</h2>
+          <div className="mt-4 grid gap-8 sm:grid-cols-[220px_1fr] sm:items-start">
+            <img
+              src={asset("/images/org/conversation-bowens.png")}
+              alt="Dr. Lisa Bowens."
+              data-provenance="REAL"
+              className="w-full max-w-[220px] object-cover"
+            />
+            <div className="space-y-4">
+              <p>
+                Dr. Lisa Marie Bowens is Associate Professor of New Testament at Princeton Theological
+                Seminary and the first African American woman to earn tenure in its Bible department.
+                She holds degrees from the University of North Carolina at Greensboro, Duke Divinity
+                School, and Princeton Theological Seminary. A New Testament scholar and award-winning
+                author, she is featured in NSBT&rsquo;s Hermeneutics course.
+              </p>
+              <p>
+                Join us for an engaging conversation as she presents &ldquo;Glimpses of Faith and Hope:
+                Engaging African American Biblical Interpretations.&rdquo;
+              </p>
+            </div>
+          </div>
         </PageShell>
       );
     case "/students/career":
