@@ -170,20 +170,56 @@ function Home() {
       <section className="border-t border-rule bg-paper">
         <PageWidth>
           <SectionTitle>Academics</SectionTitle>
-          <div className="mx-auto mt-10 grid max-w-5xl gap-x-14 gap-y-6 text-[1.08rem] leading-[1.68] text-fg/90 md:grid-cols-2">
-            <p>
-              Learning at the New School of Biblical Theology is entirely online. The main forms of
-              teaching and learning, along with student services and support, are conducted online,
-              embracing a variety of methods including discussion boards, videos, and teleconferencing.
-            </p>
-            <p>
-              Online learning is student-centered. Students are active participants in gathering
-              information and constructing new knowledge, learning from each other as well as from the
-              content of the courses. Each instructor serves more as &ldquo;a guide by the side&rdquo;
-              than &ldquo;the sage on the stage.&rdquo;
-            </p>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-x-14 gap-y-6 text-[1.05rem] leading-[1.68] text-fg/90 md:grid-cols-2">
+            <div className="space-y-6">
+              <p>
+                Learning at New School of Biblical Theology (NSBT) is entirely online. While there may
+                be occasional opportunities for gathering in conferences, intensive workshops, special
+                pastoral training events, and eventually graduation exercises, the main forms of
+                teaching and learning, as well as the supplementary work of student services and
+                support, are conducted online. Online learning embraces a variety of methods including
+                discussion boards, videos, and teleconferencing. Students in NSBT can expect to engage
+                in all of these resources.
+              </p>
+              <p>
+                Online learning is student-centered. Students are active participants in the process of
+                gathering information and constructing new knowledge out of it. They are not simply
+                passive recipients of ideas being passed down from a single teacher. Learning is
+                collaborative and interactive.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <p>
+                Students will learn from each other as well as from the content of the various courses.
+                NSBT&rsquo;s format also requires students to draw upon their own experience, background,
+                and culture as they relate this knowledge to their various and often distinct contexts.
+                Each instructor in the online classes serves more as &ldquo;a guide by the side&rdquo;
+                than &ldquo;the sage on the stage.&rdquo; The NSBT learning environment and philosophy
+                offers the students an opportunity to take ownership for their learning and to explore
+                the various ways they will impact and influence others within their own context of
+                ministry.
+              </p>
+              <p>
+                Naturally, one of the primary requirements for online learning is that students have
+                access to a reliable computer and a dependable Wi-Fi connection; a cell phone or tablet
+                is typically not sufficient. The computer needs both audio and video capacities so that
+                students can listen and watch online. Students generally use Microsoft Word for written
+                work and need to be ready to read, and in some cases create, Adobe PDF files. Upon
+                enrollment students are given an NSBT email address and granted access to the NSBT
+                Learning Management System (LMS), the online campus, as well as to the Digital
+                Theological Library (DTL).
+              </p>
+            </div>
           </div>
-          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
+        </PageWidth>
+        <img
+          src={asset("/images/org/sec-academics.jpg")}
+          alt="Hands folded in prayer over an open Bible."
+          data-provenance="REAL"
+          className="mt-12 h-[36vw] max-h-[540px] w-full object-cover"
+        />
+        <PageWidth className="pt-14">
+          <div className="grid gap-x-12 gap-y-16 sm:grid-cols-2">
             {academicsTiles.map((t, i) => (
               <Tile key={t.label} index={i} {...t} />
             ))}
@@ -225,21 +261,50 @@ function Home() {
       <section className="border-t border-rule bg-paper">
         <PageWidth>
           <SectionTitle>Current Students</SectionTitle>
-          <div className="mx-auto mt-10 max-w-3xl space-y-6 text-[1.06rem] leading-[1.7] text-fg/90">
-            <p>
-              Once you have been notified of your acceptance and have informed the Registrar of your
-              intention to enroll, you will be contacted by the Registration Department with
-              instructions on accessing the NSBT online learning system and contacting your Academic
-              Advisor. Introductory tutorials will guide you through the basics of the system.
-            </p>
-            <p>
-              You must register for all classes you intend to take each academic Session in order to
-              be enrolled, and you may register for subsequent Sessions up to one year in advance.
-              Registration opens online two weeks before each Session and continues until the second
-              week of the Session. The resources below carry the details.
-            </p>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-x-14 gap-y-6 text-[1.02rem] leading-[1.68] text-fg/90 md:grid-cols-2">
+            <div className="space-y-6">
+              <p>
+                Once you have been notified of your acceptance and have informed the Registrar of your
+                intention to enroll, you will be contacted by the Registration Department with
+                instructions about how to access the NSBT online learning system and how to contact
+                your Academic Advisor. Through those instructions you can access several introductory
+                tutorials that guide you through the basics of the system.
+              </p>
+              <p>
+                As a student, you must register for all classes you intend to take each academic
+                Session in order to be enrolled. You may register for subsequent Sessions up to one
+                year in advance, with the option of changing your registration later if necessary.
+                Registration opens online two weeks prior to each Session and continues until the
+                second week of the Session. Thereafter a student can only withdraw from a class, with
+                tuition refunds calculated on the number of weeks left in the Session.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <p>
+                Matriculated students are expected to continue enrolling in subsequent Sessions through
+                the Academic Year until they complete their course of study and earn their degree.
+                Students may take one or two Sessions off each Academic Year without losing their
+                status as continuously enrolled candidates; taking more requires a Leave of Absence
+                form filed with the Registrar.
+              </p>
+              <p>
+                The Master of Arts degree requires a minimum of two years for completion and must be
+                completed within five years of initial enrollment unless a student has formally applied
+                for a Leave of Absence. A Leave of Absence suspends the maximum time by three more
+                years, after which a student must reapply for admission. Exceptions can be made only by
+                the Academic Dean, upon petition in writing.
+              </p>
+            </div>
           </div>
-          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
+        </PageWidth>
+        <img
+          src={asset("/images/org/sec-students.jpg")}
+          alt="A stack of books and a notebook."
+          data-provenance="REAL"
+          className="mt-12 h-[36vw] max-h-[540px] w-full object-cover"
+        />
+        <PageWidth className="pt-14">
+          <div className="grid gap-x-12 gap-y-16 sm:grid-cols-2">
             {currentStudentsTiles.map((t, i) => (
               <Tile key={t.label} index={i} {...t} />
             ))}
