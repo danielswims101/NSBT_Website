@@ -76,24 +76,29 @@ function GoldButton({ to, children }: { to: string; children: string }) {
   );
 }
 
-function Tile({ img, label, href, note }: { img: string; label: string; href: string; note?: string }) {
+function Tile({ img, label, href, note, index }: { img: string; label: string; href: string; note?: string; index: number }) {
+  // nsbt.org lays these out two per row with the images on the outer edges,
+  // so the right-hand tile mirrors the left (image right, text left).
+  const imageRight = index % 2 === 1;
   return (
-    <div className="flex flex-col items-center text-center">
-      <Link to={href} className="group block w-full overflow-hidden">
+    <div className={`flex items-center gap-6 ${imageRight ? "flex-row-reverse" : ""}`}>
+      <Link to={href} className="group block w-1/2 shrink-0 overflow-hidden">
         <img
           src={asset(img)}
           alt=""
           className="aspect-square w-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.04]"
         />
       </Link>
-      <h3 className="mt-5 font-display text-[1.55rem] font-medium text-ink">{label}</h3>
-      {note ? (
-        <p className="mt-2 font-sans text-[11px] uppercase tracking-[0.18em] text-muted">{note}</p>
-      ) : (
-        <p className="mt-4">
-          <GoldButton to={href}>Learn More</GoldButton>
-        </p>
-      )}
+      <div className="w-1/2">
+        <h3 className="font-display text-[1.6rem] font-medium text-ink">{label}</h3>
+        {note ? (
+          <p className="mt-2 font-sans text-[11px] uppercase tracking-[0.18em] text-muted">{note}</p>
+        ) : (
+          <p className="mt-5">
+            <GoldButton to={href}>Learn More</GoldButton>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
@@ -179,9 +184,9 @@ function Home() {
               than &ldquo;the sage on the stage.&rdquo;
             </p>
           </div>
-          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-            {academicsTiles.map((t) => (
-              <Tile key={t.label} {...t} />
+          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
+            {academicsTiles.map((t, i) => (
+              <Tile key={t.label} index={i} {...t} />
             ))}
           </div>
         </PageWidth>
@@ -235,9 +240,9 @@ function Home() {
               week of the Session. The resources below carry the details.
             </p>
           </div>
-          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-            {currentStudentsTiles.map((t) => (
-              <Tile key={t.label} {...t} />
+          <div className="mt-14 grid gap-x-12 gap-y-16 sm:grid-cols-2">
+            {currentStudentsTiles.map((t, i) => (
+              <Tile key={t.label} index={i} {...t} />
             ))}
           </div>
         </PageWidth>
@@ -275,7 +280,7 @@ function Home() {
               to="/give"
               className="inline-flex items-center border-2 border-seal px-8 py-3 font-sans text-[12.5px] uppercase tracking-[0.2em] text-seal transition-colors hover:bg-seal hover:text-paper"
             >
-              Give
+              Donate
             </Link>
           </div>
 
